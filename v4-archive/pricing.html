@@ -1,0 +1,121 @@
+<!-- ========== AG SECTION: pricing (Home preview and Services page) ========== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  .ag-price{--ag-bg:#060607;--ag-surface:#0e0e10;--ag-surface-2:#151518;--ag-line:rgba(255,255,255,.1);--ag-text:#fbf6ea;--ag-muted:#a8a193;--ag-gold:#f0bb4a;--ag-gold-ink:#1a1204;
+    position:relative;background:var(--ag-bg);color:var(--ag-text);font-family:'Figtree',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:96px 24px;box-sizing:border-box;overflow:hidden}
+  .ag-price *,.ag-price *::before,.ag-price *::after{box-sizing:border-box}
+  .ag-price__wrap{max-width:1248px;margin:0 auto}
+  .ag-price__head{max-width:720px;margin-bottom:48px}
+  .ag-price__kick{display:inline-flex;align-items:center;gap:10px;padding:7px 16px 7px 8px;border:1px solid var(--ag-line);border-radius:999px;font-size:.86rem;color:var(--ag-muted);background:rgba(255,255,255,.03)}
+  .ag-price__kick img{width:26px;height:26px}
+  .ag-price__title{margin:20px 0 0;font-weight:800;letter-spacing:-.03em;line-height:1.06;font-size:clamp(2rem,2.6vw + 1rem,3.4rem)}
+  .ag-price__title em{font-style:normal;color:var(--ag-gold)}
+  .ag-price__lead{margin:16px 0 0;font-size:1.1rem;line-height:1.6;color:var(--ag-muted);max-width:56ch}
+  .ag-price.ag-pre [data-r]{opacity:0;filter:blur(8px);transform:translateY(22px)}
+  .ag-price [data-r]{transition:opacity .8s cubic-bezier(.2,.7,.2,1),filter .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0) * 80ms)}
+  .ag-price.ag-pre [data-r].ag-in{opacity:1;filter:none;transform:none}
+  @media (max-width:700px){.ag-price{padding:68px 20px}}
+  @media (prefers-reduced-motion:reduce){.ag-price.ag-pre [data-r]{opacity:1;filter:none;transform:none}.ag-price [data-r]{transition:none}}
+
+  .ag-price__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .ag-price__card{position:relative;display:flex;flex-direction:column;padding:30px 28px 28px;border:1px solid var(--ag-line);border-radius:24px;background:var(--ag-surface);transition:transform .25s ease-out,border-color .25s;will-change:transform}
+  .ag-price__card:hover{border-color:rgba(229,176,64,.5)}
+  .ag-price__card.ag-feat{border-color:rgba(229,176,64,.55);background:linear-gradient(180deg,#17130b,#0e0e10 60%)}
+  .ag-price__emo{width:76px;height:76px;filter:drop-shadow(0 14px 12px rgba(0,0,0,.5));margin-bottom:6px}
+  .ag-price__badge{position:absolute;right:22px;top:24px;padding:6px 12px;border-radius:999px;background:var(--ag-gold);color:var(--ag-gold-ink);font-size:.76rem;font-weight:800}
+  .ag-price__card h3{margin:12px 0 0;font-size:1.4rem;font-weight:800;letter-spacing:-.02em}
+  .ag-price__d{margin:8px 0 0;color:var(--ag-muted);line-height:1.55;font-size:.98rem;min-height:3.1em}
+  .ag-price__amt{margin-top:20px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .ag-price__amt strong{font-size:2.5rem;font-weight:800;letter-spacing:-.04em;line-height:1}
+  .ag-price__amt small{color:var(--ag-muted);font-size:.86rem;font-weight:600}
+  .ag-price__card ul{list-style:none;margin:20px 0 26px;padding:0;display:grid;gap:11px;flex:1}
+  .ag-price__card li{position:relative;padding-left:28px;color:var(--ag-text);font-size:.96rem;line-height:1.45}
+  .ag-price__card li::before{content:"";position:absolute;left:0;top:.2em;width:18px;height:18px;border-radius:50%;background:rgba(229,176,64,.16) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M5 9.4l2.6 2.6L13 6.4' fill='none' stroke='%23e5b040' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/18px no-repeat}
+  .ag-price__cta{display:flex;justify-content:center;padding:15px 20px;border-radius:14px;border:1px solid rgba(255,255,255,.18);color:var(--ag-text);text-decoration:none;font-weight:700;transition:background .2s,border-color .2s,color .2s}
+  .ag-price__cta:hover{border-color:var(--ag-gold);background:rgba(229,176,64,.08)}
+  .ag-price__card.ag-feat .ag-price__cta{background:var(--ag-gold);color:var(--ag-gold-ink);border-color:var(--ag-gold)}
+  .ag-price__card.ag-feat .ag-price__cta:hover{background:#f2c35c}
+  .ag-price__note{margin:26px 0 0;color:var(--ag-muted);font-size:.92rem;line-height:1.6;max-width:78ch}
+  @media (max-width:1020px){.ag-price__grid{grid-template-columns:1fr 1fr}}
+  @media (max-width:660px){.ag-price__grid{grid-template-columns:1fr}}
+</style>
+<section class="ag-price" id="ag-price" aria-label="Services and pricing">
+  <div class="ag-price__wrap">
+    <div class="ag-price__head">
+      <div class="ag-price__kick" data-r><img data-em="Money bag|money_bag" alt=""><span>Services and pricing</span></div>
+      <h2 class="ag-price__title" data-r style="--i:1">Clear starting prices. <em>No guesswork.</em></h2>
+      <p class="ag-price__lead" data-r style="--i:2">Pick the closest fit. After a short conversation you get a tailored proposal with the final scope, cost and timeline.</p>
+    </div>
+    <div class="ag-price__grid"><article class="ag-price__card" data-r data-tilt style="--i:0">
+      <img class="ag-price__emo" data-em="Bullseye|bullseye" alt="">
+      
+      <h3>Landing Pages</h3><p class="ag-price__d">One focused page built to get a visitor to act.</p>
+      <div class="ag-price__amt"><small>from</small><strong>$150</strong></div>
+      <ul><li>One custom landing page</li><li>Responsive, 6 to 8 sections</li><li>Call-to-action integration</li><li>Basic SEO and agreed tracking</li></ul>
+      <a class="ag-price__cta" data-ag-link="contact" href="/contact">Discuss your project</a></article><article class="ag-price__card ag-feat" data-r data-tilt style="--i:1">
+      <img class="ag-price__emo" data-em="Desktop computer|desktop_computer" alt="">
+      
+      <h3>Business Websites</h3><p class="ag-price__d">A professional site that presents your business online.</p>
+      <div class="ag-price__amt"><small>from</small><strong>$400</strong></div>
+      <ul><li>Up to five pages</li><li>Contact integration</li><li>Basic SEO and analytics</li><li>Deployment included</li></ul>
+      <a class="ag-price__cta" data-ag-link="contact" href="/contact">Discuss your project</a></article><article class="ag-price__card" data-r data-tilt style="--i:2">
+      <img class="ag-price__emo" data-em="Rocket|rocket" alt="">
+      
+      <h3>Sales Funnels</h3><p class="ag-price__d">A scoped funnel that turns visitors into leads and customers.</p>
+      <div class="ag-price__amt"><small>from</small><strong>$750</strong></div>
+      <ul><li>Sales or lead-gen page and thank-you page</li><li>Form and basic CRM integration</li><li>One basic automation workflow</li><li>Conversion tracking</li></ul>
+      <a class="ag-price__cta" data-ag-link="contact" href="/contact">Discuss your project</a></article><article class="ag-price__card" data-r data-tilt style="--i:3">
+      <img class="ag-price__emo" data-em="Gear|gear" alt="">
+      
+      <h3>Web Applications</h3><p class="ag-price__d">A custom build for a clearly defined MVP, quoted per project.</p>
+      <div class="ag-price__amt"><small>custom-scoped from</small><strong>$1,000</strong></div>
+      <ul><li>Scoped around your features</li><li>Authentication and database as needed</li><li>Integrations and security reviewed</li><li>Milestone-based payments</li></ul>
+      <a class="ag-price__cta" data-ag-link="contact" href="/contact">Get a quote</a></article><article class="ag-price__card" data-r data-tilt style="--i:4">
+      <img class="ag-price__emo" data-em="Artist palette|artist_palette" alt="">
+      
+      <h3>Website Redesign</h3><p class="ag-price__d">A fresh, faster version of a site you already have.</p>
+      <div class="ag-price__amt"><small>from</small><strong>$300</strong></div>
+      <ul><li>Review of your current site</li><li>New layout and design</li><li>Responsive rebuild</li><li>Priced by pages and condition</li></ul>
+      <a class="ag-price__cta" data-ag-link="contact" href="/contact">Discuss your project</a></article><article class="ag-price__card" data-r data-tilt style="--i:5">
+      <img class="ag-price__emo" data-em="Hammer and wrench|hammer_and_wrench" alt="">
+      
+      <h3>Website Maintenance</h3><p class="ag-price__d">Routine care so your site stays healthy.</p>
+      <div class="ag-price__amt"><small>per month, from</small><strong>$75</strong><small>/month</small></div>
+      <ul><li>Routine checks and supported updates</li><li>Backups where applicable</li><li>Minor content changes</li><li>Basic technical support</li></ul>
+      <a class="ag-price__cta" data-ag-link="contact" href="/contact">Get a quote</a></article></div>
+    <p class="ag-price__note" data-r>All prices are starting estimates. A tailored proposal confirms the final scope, cost and timeline. Hosting, domain registration, software subscriptions and third-party fees are paid separately unless included in your proposal. Maintenance excludes unlimited development, major redesigns, new features and third-party costs.</p>
+  </div>
+</section>
+
+<script>
+(function(){
+  var root=document.getElementById('ag-price'); if(!root||root.getAttribute('data-ag-init')) return; root.setAttribute('data-ag-init','1');
+  var BASE='https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/';
+  function em(scope){var im=(scope||root).querySelectorAll('img[data-em]');for(var i=0;i<im.length;i++){if(im[i].getAttribute('src'))continue;var p=im[i].getAttribute('data-em').split('|');im[i].onerror=function(){this.style.visibility='hidden'};im[i].src=(window.AGE&&window.AGE[p[0]])||(BASE+encodeURIComponent(p[0])+'/3D/'+p[1]+'_3d.png');}}
+  
+  var LINKS={ contact:'/contact' };
+  var al=root.querySelectorAll('[data-ag-link]');for(var j=0;j<al.length;j++){var k=al[j].getAttribute('data-ag-link');if(LINKS[k])al[j].setAttribute('href',LINKS[k]);}
+
+  em();
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els=root.querySelectorAll('[data-r]');
+  if('IntersectionObserver' in window&&!reduce){
+    root.className+=' ag-pre';
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('ag-in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    for(var i=0;i<els.length;i++)io.observe(els[i]);
+    setTimeout(function(){for(var i=0;i<els.length;i++)els[i].classList.add('ag-in');},6000);
+  }
+  /* 3D tilt on cards */
+  var fine=window.matchMedia&&window.matchMedia('(pointer:fine)').matches;
+  if(fine&&!reduce){
+    var cards=root.querySelectorAll('[data-tilt]');
+    cards.forEach(function(c){
+      c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+        c.style.transform='perspective(900px) rotateY('+(x*10).toFixed(2)+'deg) rotateX('+(-y*10).toFixed(2)+'deg) translateY(-4px)';});
+      c.addEventListener('mouseleave',function(){c.style.transform='';});
+    });
+  }
+})();
+</script>

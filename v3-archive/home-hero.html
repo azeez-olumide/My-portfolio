@@ -1,0 +1,204 @@
+<!-- ========== AG SECTION: home-hero v3 (Home page, directly under the header) ==========
+     Left: who you are, what you build, real numbers. Right: a browser frame.
+       - Until you add project screenshots, the frame shows a small page being built (wireframe to finished).
+       - Add screenshots in PROJECTS at the bottom and the frame becomes a slideshow of your real work.
+     No WebGL, no external scripts: loads fast and works the same inside GHL. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  .ag-hero{
+    --ag-bg:#060607; --ag-surface:#0e0e10; --ag-surface-2:#151518; --ag-line:rgba(255,255,255,.1);
+    --ag-text:#f3eee3; --ag-muted:#a8a193; --ag-gold:#e5b040; --ag-gold-ink:#1a1204;
+    background:var(--ag-bg);color:var(--ag-text);padding:140px 24px 80px;
+    font-family:'Figtree',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;box-sizing:border-box;overflow:hidden}
+  .ag-hero *{box-sizing:border-box}
+  .ag-hero__inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:72px;align-items:center}
+
+  .ag-hero__who{display:flex;align-items:center;gap:14px;margin:0 0 28px}
+  .ag-hero__avatar{width:48px;height:48px;border-radius:50%;border:1px solid rgba(229,176,64,.55);background:#0e0e10;object-fit:cover;padding:0}
+  .ag-hero__avatar--mono{padding:9px;object-fit:contain}
+  .ag-hero__who b{display:block;font-size:1rem;font-weight:700;line-height:1.25}
+  .ag-hero__who span{display:block;font-size:.9rem;color:var(--ag-muted);line-height:1.3}
+
+  .ag-hero__title{margin:0;font-weight:700;letter-spacing:-.03em;line-height:1.06;font-size:clamp(2rem,2.5vw + 1.1rem,3.35rem);color:#fff;max-width:21ch;text-wrap:balance}
+  .ag-hero__sub{margin:26px 0 0;max-width:36em;font-size:clamp(1.02rem,.3vw + .98rem,1.2rem);line-height:1.65;color:var(--ag-muted)}
+
+  .ag-hero__actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:34px}
+  .ag-hero__btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 26px;border-radius:10px;font-weight:700;font-size:1rem;text-decoration:none;transition:background .2s,border-color .2s,transform .2s}
+  .ag-hero__btn--gold{color:var(--ag-gold-ink);background:var(--ag-gold)}
+  .ag-hero__btn--gold:hover{background:#f2c35c;transform:translateY(-1px)}
+  .ag-hero__btn--line{color:var(--ag-text);border:1px solid rgba(255,255,255,.24)}
+  .ag-hero__btn--line:hover{border-color:var(--ag-gold);color:#fff}
+  .ag-hero__note{margin:14px 0 0;font-size:.88rem;color:var(--ag-muted)}
+  .ag-hero a:focus-visible{outline:2px solid var(--ag-gold);outline-offset:3px}
+
+  .ag-hero__proof{list-style:none;margin:40px 0 0;padding:24px 0 0;border-top:1px solid var(--ag-line);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+  .ag-hero__proof strong{display:block;font-size:clamp(1.6rem,1.2vw + 1.3rem,2.15rem);font-weight:700;letter-spacing:-.02em;line-height:1.1;color:#fff;font-variant-numeric:tabular-nums}
+  .ag-hero__proof span{display:block;margin-top:4px;font-size:.88rem;line-height:1.35;color:var(--ag-muted)}
+  .ag-hero__stack{margin:26px 0 0;font-size:.92rem;line-height:1.7;color:var(--ag-muted)}
+  .ag-hero__stack b{color:var(--ag-text);font-weight:600;margin-right:8px;white-space:nowrap}
+  .ag-hero__stack i{font-style:normal;color:rgba(255,255,255,.28);margin:0 8px}
+
+  /* ---- browser frame ---- */
+  .ag-hero__stage{perspective:1200px;min-width:0}
+  .ag-hero__frame{border:1px solid var(--ag-line);border-radius:14px;background:var(--ag-surface);overflow:hidden;box-shadow:0 40px 70px -30px rgba(0,0,0,.85);
+    transform:rotateY(var(--ry,0deg)) rotateX(var(--rx,0deg));transition:transform .25s ease-out;will-change:transform}
+  .ag-hero__chrome{display:flex;align-items:center;gap:12px;padding:11px 14px;border-bottom:1px solid var(--ag-line);background:var(--ag-surface-2)}
+  .ag-hero__url{flex:1;min-width:0;padding:6px 12px;border-radius:7px;background:#09090a;font-size:.78rem;color:var(--ag-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .ag-hero__screen{position:relative;aspect-ratio:16/11;background:#0b0b0d}
+
+  /* wireframe that builds itself */
+  .ag-w{position:absolute;inset:0;padding:5% 5.5%;display:grid;grid-template-rows:auto 1fr auto;gap:6%}
+  .ag-b{background:transparent;border:1px dashed rgba(255,255,255,.3);border-radius:5px;transition:background-color .7s ease,border-color .7s ease;transition-delay:var(--d,0s)}
+  .ag-built .ag-b{background:var(--f,#1d1d21);border-color:transparent}
+  .ag-w__nav{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .ag-w__nav-l,.ag-w__nav-r{display:flex;align-items:center;gap:8px}
+  .ag-w__logo{width:20px;height:20px;--f:#e5b040}
+  .ag-w__bar{height:8px}
+  .ag-w__hero{display:grid;grid-template-columns:1.15fr .85fr;gap:6%;align-items:center}
+  .ag-w__copy{display:grid;gap:9px}
+  .ag-w__h{height:15px;--f:#f3eee3}
+  .ag-w__p{height:7px;--f:#3a3a40}
+  .ag-w__btn{width:42%;height:24px;margin-top:6px;--f:#e5b040;border-radius:6px}
+  .ag-w__img{height:78%;min-height:70px;--f:#1a1a1e;border-radius:9px}
+  .ag-w__cards{display:grid;grid-template-columns:repeat(3,1fr);gap:4%}
+  .ag-w__card{height:46px;border-radius:7px}
+
+  /* screenshot slideshow */
+  .ag-hero__slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:0;transition:opacity .8s ease}
+  .ag-hero__slide.ag-on{opacity:1}
+
+  .ag-hero__times{list-style:none;margin:20px 0 0;padding:0;border-top:1px solid var(--ag-line)}
+  .ag-hero__times li{display:flex;justify-content:space-between;gap:16px;padding:11px 2px;border-bottom:1px solid var(--ag-line);font-size:.92rem;color:var(--ag-muted)}
+  .ag-hero__times b{font-weight:600;color:var(--ag-text);white-space:nowrap}
+  .ag-hero__cap{margin:14px 2px 0;font-size:.85rem;color:var(--ag-muted)}
+
+  /* entrance: content is visible by default; JS adds .ag-pre then .ag-in */
+  .ag-hero.ag-pre .ag-rv{opacity:0;transform:translateY(18px)}
+  .ag-hero.ag-pre.ag-in .ag-rv{opacity:1;transform:none;transition:opacity .7s ease,transform .7s ease;transition-delay:calc(var(--i,0)*90ms)}
+
+  @media (max-width:980px){
+    .ag-hero{padding:148px 22px 64px}
+    .ag-hero__inner{grid-template-columns:minmax(0,1fr);gap:56px}
+    .ag-hero__title{max-width:22ch}
+  }
+  @media (max-width:560px){
+    .ag-hero{padding:140px 20px 56px}
+    .ag-hero__btn{width:100%}
+    .ag-hero__proof{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px}
+    .ag-hero__stack i{margin:0 5px}
+  }
+</style>
+
+<section class="ag-hero" id="ag-hero" aria-label="Introduction">
+  <div class="ag-hero__inner">
+    <div class="ag-hero__copy">
+      <div class="ag-hero__who ag-rv" style="--i:0">
+        <img class="ag-hero__avatar ag-hero__avatar--mono" id="ag-avatar" alt="Azeez Gazalle" width="48" height="48" src="data:image/webp;base64,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">
+        <div><b>Azeez Gazalle</b><span>Full-stack web developer</span></div>
+      </div>
+      <h1 class="ag-hero__title ag-rv" style="--i:1">I build fast, custom websites and automated funnels for businesses and agencies.</h1>
+      <p class="ag-hero__sub ag-rv" style="--i:2">Design, development and CRM automation from one person, from the first conversation to launch. I work remotely with clients in Nigeria and abroad.</p>
+      <div class="ag-hero__actions ag-rv" style="--i:3">
+        <a class="ag-hero__btn ag-hero__btn--gold" data-ag-link="contact" href="/contact">Start a project</a>
+        <a class="ag-hero__btn ag-hero__btn--line" id="ag-hero-call" href="/contact#book">Book a discovery call</a>
+      </div>
+      <p class="ag-hero__note ag-rv" style="--i:3">Free 20-minute intro call. Replies within 24 business hours, Monday to Friday.</p>
+
+      <ul class="ag-hero__proof ag-rv" style="--i:4">
+        <li><strong>6+</strong><span>business websites</span></li>
+        <li><strong>5+</strong><span>landing pages</span></li>
+        <li><strong>5+</strong><span>clients served</span></li>
+        <li><strong>3 to 4</strong><span>years building</span></li>
+      </ul>
+      <p class="ag-hero__stack ag-rv" style="--i:5"><b>Built with</b>HTML<i>/</i>CSS<i>/</i>JavaScript<i>/</i>React<i>/</i>Supabase<i>/</i>Vercel<i>/</i>GoHighLevel<i>/</i>Make</p>
+    </div>
+
+    <div class="ag-hero__stage ag-rv" style="--i:2" id="ag-stage">
+      <div class="ag-hero__frame" id="ag-frame">
+        <div class="ag-hero__chrome"><div class="ag-hero__url" id="ag-url">yourbusiness.com</div></div>
+        <div class="ag-hero__screen" id="ag-screen">
+          <div class="ag-w" id="ag-wire" aria-hidden="true">
+            <div class="ag-w__nav">
+              <div class="ag-w__nav-l"><i class="ag-b ag-w__logo" style="--d:.05s"></i><i class="ag-b ag-w__bar" style="width:58px;--d:.1s"></i></div>
+              <div class="ag-w__nav-r"><i class="ag-b ag-w__bar" style="width:26px;--d:.15s"></i><i class="ag-b ag-w__bar" style="width:26px;--d:.2s"></i><i class="ag-b ag-w__bar" style="width:26px;--d:.25s"></i></div>
+            </div>
+            <div class="ag-w__hero">
+              <div class="ag-w__copy">
+                <i class="ag-b ag-w__h" style="width:92%;--d:.35s"></i>
+                <i class="ag-b ag-w__h" style="width:70%;--d:.42s"></i>
+                <i class="ag-b ag-w__p" style="width:88%;--d:.5s"></i>
+                <i class="ag-b ag-w__p" style="width:64%;--d:.56s"></i>
+                <i class="ag-b ag-w__btn" style="--d:.65s"></i>
+              </div>
+              <i class="ag-b ag-w__img" style="--d:.5s"></i>
+            </div>
+            <div class="ag-w__cards">
+              <i class="ag-b ag-w__card" style="--d:.8s"></i><i class="ag-b ag-w__card" style="--d:.88s"></i><i class="ag-b ag-w__card" style="--d:.96s"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="ag-hero__cap" id="ag-cap">Typical delivery times, confirmed in every proposal:</p>
+      <ul class="ag-hero__times">
+        <li>Landing page <b>5 to 10 business days</b></li>
+        <li>Business website <b>2 to 3 weeks</b></li>
+        <li>Sales funnel <b>2 to 4 weeks</b></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var root=document.getElementById('ag-hero'); if(!root||root.dataset.agInit) return; root.dataset.agInit='1';
+
+  /* ===================== EDIT THESE ===================== */
+  var LINKS={ contact:'/contact' };          // exact URL path of your Contact page in GHL
+  var CALENDLY_URL='';                       // your Calendly link. Leave '' until you have it (the button then opens the Contact page)
+  var PHOTO_URL='';                          // optional: a square photo of you (JPG/PNG/WebP URL from the GHL media library)
+  var PROJECTS=[                             // add your real work here and the frame becomes a slideshow. Example entries:
+    // { src:'https://.../project-one.webp', name:'Project One', url:'projectone.com' },
+    // { src:'https://.../project-two.webp', name:'Project Two', url:'projecttwo.com' }
+  ];
+  /* ======================================================= */
+
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var a=root.querySelectorAll('[data-ag-link]');
+  for(var i=0;i<a.length;i++){var k=a[i].getAttribute('data-ag-link'); if(LINKS[k]) a[i].setAttribute('href',LINKS[k]);}
+  var call=document.getElementById('ag-hero-call');
+  if(CALENDLY_URL){ call.setAttribute('href',CALENDLY_URL); call.setAttribute('target','_blank'); call.setAttribute('rel','noopener'); }
+  else{ call.setAttribute('href',(LINKS.contact||'/contact')+'#book'); }
+
+  if(PHOTO_URL){ var av=document.getElementById('ag-avatar'); av.classList.remove('ag-hero__avatar--mono'); av.src=PHOTO_URL; }
+
+  if(!reduce){ root.classList.add('ag-pre'); requestAnimationFrame(function(){requestAnimationFrame(function(){root.classList.add('ag-in');});}); }
+
+  /* ---- frame content ---- */
+  var screen=document.getElementById('ag-screen'), wire=document.getElementById('ag-wire'), url=document.getElementById('ag-url'), cap=document.getElementById('ag-cap');
+  if(PROJECTS.length){
+    wire.style.display='none'; var slides=[];
+    PROJECTS.forEach(function(p,n){ var im=document.createElement('img'); im.className='ag-hero__slide'+(n===0?' ag-on':''); im.alt=p.name||'Project screenshot'; im.src=p.src; im.decoding='async'; screen.appendChild(im); slides.push(im); });
+    function show(n){ slides.forEach(function(s,j){s.classList.toggle('ag-on',j===n);}); url.textContent=PROJECTS[n].url||''; cap.textContent='Recent work: '+(PROJECTS[n].name||''); }
+    var cur=0; show(0);
+    if(PROJECTS.length>1&&!reduce){ setInterval(function(){cur=(cur+1)%PROJECTS.length; show(cur);},4200); }
+  }else{
+    /* wireframe builds itself, holds, then resets */
+    if(reduce){ wire.classList.add('ag-built'); }
+    else{
+      var built=false;
+      (function step(){ built=!built; wire.classList.toggle('ag-built',built); setTimeout(step,built?5200:2200); })();
+    }
+  }
+
+  /* ---- gentle tilt on the frame (desktop pointers only) ---- */
+  var frame=document.getElementById('ag-frame'), stage=document.getElementById('ag-stage');
+  if(!reduce&&window.matchMedia&&matchMedia('(hover:hover) and (min-width:981px)').matches){
+    stage.addEventListener('pointermove',function(e){ var r=stage.getBoundingClientRect(); var x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+      frame.style.setProperty('--ry',(x*5).toFixed(2)+'deg'); frame.style.setProperty('--rx',(-y*4).toFixed(2)+'deg'); },{passive:true});
+    stage.addEventListener('pointerleave',function(){ frame.style.setProperty('--ry','0deg'); frame.style.setProperty('--rx','0deg'); });
+  }
+})();
+</script>

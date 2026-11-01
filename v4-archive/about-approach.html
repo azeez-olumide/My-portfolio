@@ -1,0 +1,84 @@
+<!-- ========== AG SECTION: about-milestones-approach (About page) ========== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  .ag-appr{--ag-bg:#060607;--ag-surface:#111113;--ag-surface-2:#17171a;--ag-line:rgba(255,255,255,.12);--ag-text:#fbf6ea;--ag-muted:#b9b2a2;--ag-gold:#f0bb4a;--ag-gold-ink:#1a1204;
+    position:relative;background:var(--ag-bg);color:var(--ag-text);font-family:'Figtree',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:100px 24px;box-sizing:border-box;overflow:hidden}
+  .ag-appr::before{content:"";position:absolute;left:50%;top:-10%;width:90%;height:60%;transform:translateX(-50%);background:radial-gradient(ellipse at center,rgba(240,187,74,.10),transparent 70%);pointer-events:none}
+  .ag-appr *,.ag-appr *::before,.ag-appr *::after{box-sizing:border-box}
+  .ag-appr__wrap{position:relative;max-width:1248px;margin:0 auto}
+  .ag-appr__head{max-width:760px;margin-bottom:48px}
+  .ag-appr__head--row{max-width:none;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .ag-appr__kick{display:inline-flex;align-items:center;gap:10px;padding:7px 16px 7px 8px;border:1px solid var(--ag-line);border-radius:999px;font-size:.86rem;color:var(--ag-muted);background:rgba(255,255,255,.05)}
+  .ag-appr__kick img{width:26px;height:26px}
+  .ag-appr__title{margin:20px 0 0;font-weight:800;letter-spacing:-.03em;line-height:1.08;font-size:clamp(1.9rem,2.3vw + 1rem,3.1rem)}
+  .ag-appr__title em{font-style:normal;color:var(--ag-gold)}
+  .ag-appr__lead{margin:16px 0 0;font-size:1.1rem;line-height:1.6;color:var(--ag-muted);max-width:56ch}
+  .ag-appr__link{display:inline-flex;align-items:center;gap:8px;color:var(--ag-gold);font-weight:700;text-decoration:none;font-size:1rem;white-space:nowrap}
+  .ag-appr__link:hover{text-decoration:underline;text-underline-offset:4px}
+  .ag-appr__btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:14px;border:1px solid rgba(255,255,255,.22);color:var(--ag-text);text-decoration:none;font-weight:700;transition:border-color .2s,transform .2s,background .2s,box-shadow .2s}
+  .ag-appr__btn:hover{border-color:var(--ag-gold);transform:translateY(-2px)}
+  .ag-appr__btn--gold{background:var(--ag-gold);color:var(--ag-gold-ink);border-color:var(--ag-gold);box-shadow:0 12px 36px -8px rgba(240,187,74,.65)}
+  .ag-appr__btn--gold:hover{background:#ffd070;box-shadow:0 16px 44px -8px rgba(240,187,74,.9)}
+  .ag-appr.ag-pre [data-r]{opacity:0;filter:blur(8px);transform:translateY(22px)}
+  .ag-appr [data-r]{transition:opacity .8s cubic-bezier(.2,.7,.2,1),filter .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0) * 80ms)}
+  .ag-appr.ag-pre [data-r].ag-in{opacity:1;filter:none;transform:none}
+  .ag-appr .ag-ph{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;color:rgba(240,187,74,.85);font-weight:700;font-size:.9rem;border:1.5px dashed rgba(240,187,74,.55);background:repeating-linear-gradient(135deg,rgba(240,187,74,.05) 0 12px,transparent 12px 24px)}
+  .ag-appr .ag-ph svg{width:34px;height:34px;fill:currentColor;opacity:.8}
+  @media (max-width:700px){.ag-appr{padding:68px 20px}}
+  @media (prefers-reduced-motion:reduce){.ag-appr.ag-pre [data-r]{opacity:1;filter:none;transform:none}.ag-appr [data-r]{transition:none}}
+
+  .ag-appr__grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .ag-appr__m,.ag-appr__a{padding:28px;border:1px solid var(--ag-line);border-radius:24px;background:var(--ag-surface);transition:transform .25s ease-out,border-color .25s;will-change:transform}
+  .ag-appr__m:hover,.ag-appr__a:hover{border-color:rgba(240,187,74,.55)}
+  .ag-appr__m img,.ag-appr__a img{width:64px;height:64px;filter:drop-shadow(0 12px 10px rgba(0,0,0,.5))}
+  .ag-appr__m strong{display:block;margin-top:14px;font-size:2rem;font-weight:800;letter-spacing:-.03em;color:var(--ag-gold);line-height:1}
+  .ag-appr__m h3,.ag-appr__a h3{margin:10px 0 0;font-size:1.12rem;font-weight:800}
+  .ag-appr__m p,.ag-appr__a p{margin:8px 0 0;color:var(--ag-muted);line-height:1.55;font-size:.95rem}
+  .ag-appr__grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:20px}
+  .ag-appr__sub{margin:70px 0 28px;font-size:clamp(1.5rem,1.4vw + 1rem,2.1rem);font-weight:800;letter-spacing:-.02em}
+  .ag-appr__client{margin-top:56px;padding:40px;border:1px solid rgba(240,187,74,.45);border-radius:28px;background:radial-gradient(ellipse at 0 0,rgba(240,187,74,.2),transparent 70%),#0d0c09}
+  .ag-appr__client h3{margin:0;font-size:1.5rem;font-weight:800;letter-spacing:-.02em}
+  .ag-appr__client p{margin:12px 0 0;color:var(--ag-muted);line-height:1.7;font-size:1.05rem;max-width:70ch}
+  @media (max-width:1000px){.ag-appr__grid4{grid-template-columns:1fr 1fr}}
+  @media (max-width:700px){.ag-appr__grid4,.ag-appr__grid3{grid-template-columns:1fr}.ag-appr__client{padding:28px}}
+</style>
+<section class="ag-appr" id="ag-appr" aria-label="Experience and approach">
+  <div class="ag-appr__wrap">
+    <div class="ag-appr__head" style="margin-bottom:36px"><div class="ag-appr__kick" data-r><img data-em="Trophy|trophy" alt=""><span>Experience</span></div><h2 class="ag-appr__title" data-r style="--i:1">What I've built <em>so far</em>.</h2></div>
+    <div class="ag-appr__grid4"><div class="ag-appr__m" data-r data-tilt style="--i:0"><img data-em="Desktop computer|desktop_computer" alt=""><strong>6+</strong><h3>Business websites built</h3><p>Platforms that help businesses present their brand, services and value online.</p></div><div class="ag-appr__m" data-r data-tilt style="--i:1"><img data-em="Bullseye|bullseye" alt=""><strong>5+</strong><h3>Landing pages developed</h3><p>Focused pages that communicate an offer and guide visitors to one action.</p></div><div class="ag-appr__m" data-r data-tilt style="--i:2"><img data-em="Rocket|rocket" alt=""><strong>Funnels</strong><h3>Sales funnels designed</h3><p>Customer journeys built around landing pages and offers, with clarity and conversion in mind.</p></div><div class="ag-appr__m" data-r data-tilt style="--i:3"><img data-em="Hourglass not done|hourglass_not_done" alt=""><strong>3 to 4 yrs</strong><h3>Learning and building</h3><p>Graphic design, Python fundamentals, web development, Figma and GoHighLevel.</p></div></div>
+    <h2 class="ag-appr__sub" data-r>How I approach my work</h2>
+    <div class="ag-appr__grid3" style="margin-top:0"><div class="ag-appr__a" data-r data-tilt style="--i:0"><img data-em="Artist palette|artist_palette" alt=""><h3>Design with intention</h3><p>Every layout, visual element and interaction should contribute to a coherent experience.</p></div><div class="ag-appr__a" data-r data-tilt style="--i:1"><img data-em="Gear|gear" alt=""><h3>Build for functionality</h3><p>It should work reliably on every device and make it easy to navigate, interact and take action.</p></div><div class="ag-appr__a" data-r data-tilt style="--i:2"><img data-em="Light bulb|light_bulb" alt=""><h3>Think beyond the page</h3><p>Websites, landing pages, funnels and connected systems belong to one customer journey.</p></div></div>
+    <div class="ag-appr__client" data-r><h3>Working with clients</h3><p>I collaborate remotely with businesses and entrepreneurs in Nigeria and internationally. I value clear communication, defined project scopes, thoughtful execution and transparent expectations throughout design and development.</p></div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var root=document.getElementById('ag-appr'); if(!root||root.getAttribute('data-ag-init')) return; root.setAttribute('data-ag-init','1');
+  var BASE='https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/';
+  function em(){var im=root.querySelectorAll('img[data-em]');for(var i=0;i<im.length;i++){if(im[i].getAttribute('src'))continue;var p=im[i].getAttribute('data-em').split('|');im[i].onerror=function(){this.style.visibility='hidden'};im[i].src=(window.AGE&&window.AGE[p[0]])||(BASE+encodeURIComponent(p[0])+'/3D/'+p[1]+'_3d.png');}}
+  var LINKS={ home:'/', work:'/projects', services:'/services', about:'/about', contact:'/contact' };
+  var CALENDLY_URL='', WHATSAPP='2348176376470';
+  
+  em();
+  var al=root.querySelectorAll('[data-ag-link]');for(var j=0;j<al.length;j++){var k=al[j].getAttribute('data-ag-link');if(LINKS[k])al[j].setAttribute('href',LINKS[k]);}
+  var calls=root.querySelectorAll('[data-ag-call]');for(var c=0;c<calls.length;c++){calls[c].setAttribute('href',CALENDLY_URL||('https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent("Hi Azeez, I'd like to book a free 20-minute discovery call.")));}
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els=root.querySelectorAll('[data-r]');
+  if('IntersectionObserver' in window&&!reduce){
+    root.className+=' ag-pre';
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('ag-in');io.unobserve(e.target);}});},{threshold:.1,rootMargin:'0px 0px -5% 0px'});
+    for(var i=0;i<els.length;i++)io.observe(els[i]);
+    setTimeout(function(){for(var i=0;i<els.length;i++)els[i].classList.add('ag-in');},7000);
+  }
+  var fine=window.matchMedia&&window.matchMedia('(pointer:fine)').matches;
+  if(fine&&!reduce){
+    root.querySelectorAll('[data-tilt]').forEach(function(c){
+      c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform='perspective(900px) rotateY('+(x*10).toFixed(2)+'deg) rotateX('+(-y*10).toFixed(2)+'deg) translateY(-4px)';});
+      c.addEventListener('mouseleave',function(){c.style.transform='';});
+    });
+  }
+})();
+</script>

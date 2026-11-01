@@ -1,0 +1,87 @@
+<!-- ========== AG SECTION: cta-strip (bottom of Home, Work, Services, About) ========== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  .ag-cta{--ag-bg:#060607;--ag-surface:#111113;--ag-surface-2:#17171a;--ag-line:rgba(255,255,255,.12);--ag-text:#fbf6ea;--ag-muted:#b9b2a2;--ag-gold:#f0bb4a;--ag-gold-ink:#1a1204;
+    position:relative;background:var(--ag-bg);color:var(--ag-text);font-family:'Figtree',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:100px 24px;box-sizing:border-box;overflow:hidden}
+  .ag-cta::before{content:"";position:absolute;left:50%;top:-10%;width:90%;height:60%;transform:translateX(-50%);background:radial-gradient(ellipse at center,rgba(240,187,74,.10),transparent 70%);pointer-events:none}
+  .ag-cta *,.ag-cta *::before,.ag-cta *::after{box-sizing:border-box}
+  .ag-cta__wrap{position:relative;max-width:1248px;margin:0 auto}
+  .ag-cta__head{max-width:760px;margin-bottom:48px}
+  .ag-cta__head--row{max-width:none;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .ag-cta__kick{display:inline-flex;align-items:center;gap:10px;padding:7px 16px 7px 8px;border:1px solid var(--ag-line);border-radius:999px;font-size:.86rem;color:var(--ag-muted);background:rgba(255,255,255,.05)}
+  .ag-cta__kick img{width:26px;height:26px}
+  .ag-cta__title{margin:20px 0 0;font-weight:800;letter-spacing:-.03em;line-height:1.08;font-size:clamp(1.9rem,2.3vw + 1rem,3.1rem)}
+  .ag-cta__title em{font-style:normal;color:var(--ag-gold)}
+  .ag-cta__lead{margin:16px 0 0;font-size:1.1rem;line-height:1.6;color:var(--ag-muted);max-width:56ch}
+  .ag-cta__link{display:inline-flex;align-items:center;gap:8px;color:var(--ag-gold);font-weight:700;text-decoration:none;font-size:1rem;white-space:nowrap}
+  .ag-cta__link:hover{text-decoration:underline;text-underline-offset:4px}
+  .ag-cta__btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:14px;border:1px solid rgba(255,255,255,.22);color:var(--ag-text);text-decoration:none;font-weight:700;transition:border-color .2s,transform .2s,background .2s,box-shadow .2s}
+  .ag-cta__btn:hover{border-color:var(--ag-gold);transform:translateY(-2px)}
+  .ag-cta__btn--gold{background:var(--ag-gold);color:var(--ag-gold-ink);border-color:var(--ag-gold);box-shadow:0 12px 36px -8px rgba(240,187,74,.65)}
+  .ag-cta__btn--gold:hover{background:#ffd070;box-shadow:0 16px 44px -8px rgba(240,187,74,.9)}
+  .ag-cta.ag-pre [data-r]{opacity:0;filter:blur(8px);transform:translateY(22px)}
+  .ag-cta [data-r]{transition:opacity .8s cubic-bezier(.2,.7,.2,1),filter .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0) * 80ms)}
+  .ag-cta.ag-pre [data-r].ag-in{opacity:1;filter:none;transform:none}
+  .ag-cta .ag-ph{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;color:rgba(240,187,74,.85);font-weight:700;font-size:.9rem;border:1.5px dashed rgba(240,187,74,.55);background:repeating-linear-gradient(135deg,rgba(240,187,74,.05) 0 12px,transparent 12px 24px)}
+  .ag-cta .ag-ph svg{width:34px;height:34px;fill:currentColor;opacity:.8}
+  @media (max-width:700px){.ag-cta{padding:68px 20px}}
+  @media (prefers-reduced-motion:reduce){.ag-cta.ag-pre [data-r]{opacity:1;filter:none;transform:none}.ag-cta [data-r]{transition:none}}
+
+  .ag-cta{padding:40px 24px 110px}
+  .ag-cta::before{display:none}
+  .ag-cta__box{position:relative;overflow:hidden;border:1px solid rgba(240,187,74,.45);border-radius:36px;padding:72px 40px;text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(240,187,74,.30),transparent 65%),#0d0c09;box-shadow:0 0 120px -30px rgba(240,187,74,.5)}
+  .ag-cta__emo{position:absolute;width:clamp(56px,8vw,110px);filter:drop-shadow(0 16px 16px rgba(0,0,0,.6));animation:ag-cta-float 6s ease-in-out infinite}
+  @keyframes ag-cta-float{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-14px) rotate(8deg)}}
+  .ag-cta__title{max-width:18ch;margin:0 auto;font-size:clamp(2rem,3vw + 1rem,3.6rem)}
+  .ag-cta__lead{margin:18px auto 0;max-width:50ch}
+  .ag-cta__row{position:relative;display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:34px}
+  .ag-cta__small{position:relative;margin:18px 0 0;color:var(--ag-muted);font-size:.9rem}
+  @media (max-width:700px){.ag-cta{padding:20px 16px 80px}.ag-cta__box{padding:56px 22px;border-radius:28px}.ag-cta__btn{width:100%;justify-content:center}.ag-cta__emo{opacity:.5}}
+  @media (prefers-reduced-motion:reduce){.ag-cta__emo{animation:none}}
+</style>
+<section class="ag-cta" id="ag-cta" aria-label="Start a project">
+  <div class="ag-cta__wrap"><div class="ag-cta__box">
+    <img class="ag-cta__emo" data-em="Rocket|rocket" alt="" style="left:6%;top:14%">
+    <img class="ag-cta__emo" data-em="Light bulb|light_bulb" alt="" style="right:7%;top:12%;animation-delay:-2s">
+    <img class="ag-cta__emo" data-em="Handshake|handshake" alt="" style="left:11%;bottom:12%;animation-delay:-4s">
+    <img class="ag-cta__emo" data-em="Sparkles|sparkles" alt="" style="right:12%;bottom:14%;animation-delay:-1s">
+    <h2 class="ag-cta__title" data-r>Have a Project in Mind? <em>Let's Build Something That Works.</em></h2>
+    <p class="ag-cta__lead" data-r style="--i:1">Tell me what you're looking to build, and I'll get back to you within 24 business hours to discuss the next steps.</p>
+    <div class="ag-cta__row" data-r style="--i:2">
+      <a class="ag-cta__btn ag-cta__btn--gold" data-ag-link="contact" href="/contact">Start a project <img data-em="Rocket|rocket" alt="" style="width:22px;height:22px"></a>
+      <a class="ag-cta__btn" data-ag-call href="#" target="_blank" rel="noopener">Book a discovery call</a>
+    </div>
+    <p class="ag-cta__small" data-r style="--i:3">Free 20-minute call. Replies within 24 business hours, Monday to Friday.</p>
+  </div></div>
+</section>
+
+<script>
+(function(){
+  var root=document.getElementById('ag-cta'); if(!root||root.getAttribute('data-ag-init')) return; root.setAttribute('data-ag-init','1');
+  var BASE='https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/';
+  function em(){var im=root.querySelectorAll('img[data-em]');for(var i=0;i<im.length;i++){if(im[i].getAttribute('src'))continue;var p=im[i].getAttribute('data-em').split('|');im[i].onerror=function(){this.style.visibility='hidden'};im[i].src=(window.AGE&&window.AGE[p[0]])||(BASE+encodeURIComponent(p[0])+'/3D/'+p[1]+'_3d.png');}}
+  var LINKS={ home:'/', work:'/projects', services:'/services', about:'/about', contact:'/contact' };
+  var CALENDLY_URL='', WHATSAPP='2348176376470';
+  
+  em();
+  var al=root.querySelectorAll('[data-ag-link]');for(var j=0;j<al.length;j++){var k=al[j].getAttribute('data-ag-link');if(LINKS[k])al[j].setAttribute('href',LINKS[k]);}
+  var calls=root.querySelectorAll('[data-ag-call]');for(var c=0;c<calls.length;c++){calls[c].setAttribute('href',CALENDLY_URL||('https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent("Hi Azeez, I'd like to book a free 20-minute discovery call.")));}
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els=root.querySelectorAll('[data-r]');
+  if('IntersectionObserver' in window&&!reduce){
+    root.className+=' ag-pre';
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('ag-in');io.unobserve(e.target);}});},{threshold:.1,rootMargin:'0px 0px -5% 0px'});
+    for(var i=0;i<els.length;i++)io.observe(els[i]);
+    setTimeout(function(){for(var i=0;i<els.length;i++)els[i].classList.add('ag-in');},7000);
+  }
+  var fine=window.matchMedia&&window.matchMedia('(pointer:fine)').matches;
+  if(fine&&!reduce){
+    root.querySelectorAll('[data-tilt]').forEach(function(c){
+      c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform='perspective(900px) rotateY('+(x*10).toFixed(2)+'deg) rotateX('+(-y*10).toFixed(2)+'deg) translateY(-4px)';});
+      c.addEventListener('mouseleave',function(){c.style.transform='';});
+    });
+  }
+})();
+</script>

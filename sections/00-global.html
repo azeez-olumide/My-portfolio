@@ -1,0 +1,25 @@
+<!-- ========== AG SECTION: global (paste ONCE per site or once per page; optional) ==========
+     Holds the shared brand tokens, fonts and the reduced-motion rule.
+     Every other section also carries its own fallback tokens, so the site still works if this block is skipped.
+     To change the brand gold everywhere, edit the values below. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Surfaces */
+    --ag-bg:#07070a; --ag-surface:#0e0e13; --ag-surface-2:#15151b; --ag-line:rgba(255,255,255,.1);
+    /* Text */
+    --ag-text:#f8f3e9; --ag-muted:#b9b1a1;
+    /* One accent: flat gold from the logo (no gradients) */
+    --ag-gold:#f0b93e; --ag-gold-hover:#ffd479; --ag-gold-ink:#1a1204;
+    /* Shape */
+    --ag-radius:14px; --ag-radius-sm:10px; --ag-container:1200px;
+    /* Font: one family */
+    --ag-font:'Figtree',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  }
+  @media (prefers-reduced-motion:reduce){
+    [class^="ag-"],[class*=" ag-"],[class^="ag-"] *,[class*=" ag-"] *{
+      animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  }
+</style>

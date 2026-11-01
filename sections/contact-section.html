@@ -1,0 +1,244 @@
+<!-- ========== AG SECTION: contact-section (Contact page; can also sit at the bottom of Home) ==========
+     Primary action: "Start a project" inquiry form (one question at a time).
+     Secondary action: "Book a Discovery Call" (free 20 minutes).
+     Set WEBHOOK_URL (GHL Inbound Webhook) and CALENDLY_URL in the script at the bottom. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  .ag-contact{
+    --ag-bg:#07070a; --ag-surface:#0e0e13; --ag-surface-2:#15151b; --ag-line:rgba(255,255,255,.1);
+    --ag-text:#f8f3e9; --ag-muted:#b9b1a1; --ag-gold:#f0b93e; --ag-gold-ink:#1a1204; --ag-error:#ff8f8f;
+    background:var(--ag-bg);color:var(--ag-text);padding:112px 24px;border-top:1px solid var(--ag-line);
+    font-family:'Figtree',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;box-sizing:border-box;scroll-margin-top:90px}
+  .ag-contact *{box-sizing:border-box}
+  .ag-contact__inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:72px;align-items:start}
+
+  .ag-contact__title{margin:0;font-size:clamp(2rem,2.8vw + 1rem,3.3rem);font-weight:700;letter-spacing:-.03em;line-height:1.08;color:#fff;text-wrap:balance}
+  .ag-contact__lead{margin:22px 0 0;max-width:30em;font-size:1.12rem;line-height:1.65;color:var(--ag-muted)}
+  .ag-contact__promise{margin:22px 0 0;padding:14px 0;border-top:1px solid var(--ag-line);border-bottom:1px solid var(--ag-line);font-size:.98rem;color:var(--ag-text)}
+  .ag-contact__promise span{color:var(--ag-muted)}
+
+  .ag-contact__call{margin-top:36px;padding:26px;border:1px solid var(--ag-line);border-radius:14px;background:var(--ag-surface);scroll-margin-top:100px}
+  .ag-contact__call h3{margin:0 0 8px;font-size:1.15rem;font-weight:700;color:#fff}
+  .ag-contact__call p{margin:0 0 18px;font-size:.98rem;line-height:1.6;color:var(--ag-muted)}
+  .ag-contact__direct{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:10px;font-size:.98rem}
+  .ag-contact__direct li{display:flex;gap:12px;color:var(--ag-muted)}
+  .ag-contact__direct b{min-width:84px;font-weight:600;color:var(--ag-text)}
+  .ag-contact a{color:var(--ag-text)}
+  .ag-contact__direct a{text-decoration:underline;text-decoration-color:rgba(255,255,255,.3);text-underline-offset:3px}
+  .ag-contact__direct a:hover{text-decoration-color:var(--ag-gold);color:#fff}
+
+  .ag-btn2{display:inline-flex;align-items:center;justify-content:center;padding:15px 24px;border-radius:10px;font-family:inherit;font-weight:700;font-size:1rem;line-height:1.2;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:background .2s,border-color .2s,transform .2s}
+  .ag-btn2--gold{background:var(--ag-gold);color:var(--ag-gold-ink)}
+  .ag-btn2--gold:hover{background:#ffd479;transform:translateY(-1px)}
+  .ag-btn2--line{background:transparent;color:var(--ag-text)!important;border-color:rgba(255,255,255,.26)}
+  .ag-btn2--line:hover{border-color:var(--ag-gold)}
+  .ag-btn2[disabled]{opacity:.55;cursor:not-allowed;transform:none}
+  .ag-contact a:focus-visible,.ag-contact button:focus-visible,.ag-contact input:focus-visible,.ag-contact textarea:focus-visible{outline:2px solid var(--ag-gold);outline-offset:3px}
+
+  /* ---- form card ---- */
+  .ag-form{border:1px solid var(--ag-line);border-radius:16px;background:var(--ag-surface);padding:32px;min-height:430px;display:flex;flex-direction:column}
+  .ag-form__top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px;font-size:.88rem;color:var(--ag-muted)}
+  .ag-form__bar{height:4px;border-radius:4px;background:var(--ag-surface-2);overflow:hidden;margin-bottom:34px}
+  .ag-form__bar i{display:block;height:100%;width:0;background:var(--ag-gold);transition:width .35s ease}
+  .ag-form fieldset{border:0;margin:0;padding:0;min-width:0;flex:1}
+  .ag-form legend{padding:0;margin:0 0 6px;font-size:clamp(1.35rem,1vw + 1.1rem,1.75rem);font-weight:700;letter-spacing:-.02em;line-height:1.2;color:#fff}
+  .ag-form__hint{margin:0 0 22px;font-size:.95rem;color:var(--ag-muted)}
+  .ag-form input[type=text],.ag-form input[type=email],.ag-form textarea{width:100%;padding:16px 16px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:#09090a;color:var(--ag-text);font-family:inherit;font-size:1.05rem;line-height:1.4}
+  .ag-form textarea{min-height:150px;resize:vertical}
+  .ag-form input::placeholder,.ag-form textarea::placeholder{color:#8f8878}
+  .ag-form input:focus,.ag-form textarea:focus{border-color:var(--ag-gold)}
+  .ag-form__choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .ag-form__choice{position:relative;display:block}
+  .ag-form__choice input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+  .ag-form__choice span{display:block;padding:14px 16px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:#09090a;font-size:.98rem;font-weight:500;line-height:1.3;color:var(--ag-text);transition:border-color .2s,background .2s}
+  .ag-form__choice:hover span{border-color:rgba(229,176,64,.6)}
+  .ag-form__choice input:checked+span{border-color:var(--ag-gold);background:rgba(229,176,64,.12);color:#fff;font-weight:600}
+  .ag-form__choice input:focus-visible+span{outline:2px solid var(--ag-gold);outline-offset:2px}
+  .ag-form__err{min-height:1.3em;margin:12px 0 0;font-size:.92rem;color:var(--ag-error)}
+  .ag-form__nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:22px}
+  .ag-form__back{background:none;border:0;padding:12px 4px;color:var(--ag-muted);font-family:inherit;font-size:.98rem;font-weight:600;cursor:pointer}
+  .ag-form__back:hover{color:#fff}
+  .ag-form__back[hidden]{display:none}
+  .ag-form__hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .ag-form__done h3{margin:0 0 10px;font-size:1.6rem;font-weight:700;letter-spacing:-.02em;color:#fff}
+  .ag-form__done p{margin:0 0 20px;font-size:1.02rem;line-height:1.65;color:var(--ag-muted)}
+  .ag-form__done .ag-form__row{display:flex;flex-wrap:wrap;gap:12px}
+  .ag-form__sum{margin:0 0 20px;padding:0;list-style:none;border-top:1px solid var(--ag-line)}
+  .ag-form__sum li{display:flex;gap:14px;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--ag-line);font-size:.92rem;color:var(--ag-muted)}
+  .ag-form__sum b{color:var(--ag-text);font-weight:600;text-align:right;max-width:62%;overflow-wrap:anywhere}
+
+  @media (max-width:980px){.ag-contact{padding:80px 22px}.ag-contact__inner{grid-template-columns:minmax(0,1fr);gap:48px}}
+  @media (max-width:560px){.ag-contact{padding:64px 20px}.ag-form{padding:22px 18px}.ag-form__choices{grid-template-columns:minmax(0,1fr)}.ag-contact__direct li{flex-direction:column;gap:2px}.ag-btn2{width:100%}.ag-form__nav .ag-btn2{width:auto;flex:1}}
+  .ag-contact{position:relative;overflow:hidden;padding-top:150px}
+  .ag-contact::before{content:"";position:absolute;right:-10%;top:-6%;width:60vw;height:60vw;max-width:860px;max-height:860px;background:radial-gradient(closest-side,rgba(240,185,62,.22),rgba(240,185,62,.07) 55%,transparent 74%);pointer-events:none}
+  .ag-contact__inner{position:relative}
+  .ag-contact__tz{margin:6px 0 0;font-size:.88rem;color:#b9b1a1}
+  .ag-contact__tz b{color:#ffd479}
+html[data-ag-theme="light"] .ag-contact{--ag-bg:#f4efe3;--ag-surface:#fffdf8;--ag-surface-2:#ebe4d3;--ag-line:rgba(10,10,12,.14);--ag-text:#0b0b0e;--ag-muted:#5a5446;background:#f4efe3;color:#0b0b0e}
+html[data-ag-theme="light"] .ag-contact::before{opacity:.6}
+html[data-ag-theme="light"] .ag-contact .ag-form{background:#fffdf8;border-color:rgba(10,10,12,.16);box-shadow:0 30px 80px -40px rgba(122,79,0,.35)}
+html[data-ag-theme="light"] .ag-contact legend,html[data-ag-theme="light"] .ag-contact .ag-form__done h3,html[data-ag-theme="light"] .ag-contact__title,html[data-ag-theme="light"] .ag-contact__call h3{color:#0b0b0e}
+html[data-ag-theme="light"] .ag-contact .ag-form input[type=text],html[data-ag-theme="light"] .ag-contact .ag-form input[type=email],html[data-ag-theme="light"] .ag-contact .ag-form textarea{background:#fff;color:#0b0b0e;border-color:rgba(10,10,12,.3)}
+html[data-ag-theme="light"] .ag-contact .ag-form input::placeholder,html[data-ag-theme="light"] .ag-contact .ag-form textarea::placeholder{color:#7a7364}
+html[data-ag-theme="light"] .ag-contact .ag-form__choice span{background:#fff;color:#0b0b0e;border-color:rgba(10,10,12,.3)}
+html[data-ag-theme="light"] .ag-contact .ag-form__choice input:checked+span{background:rgba(240,185,62,.28);border-color:#7a4f00;color:#0b0b0e}
+html[data-ag-theme="light"] .ag-contact .ag-form__back:hover{color:#0b0b0e}
+html[data-ag-theme="light"] .ag-contact .ag-form__bar{background:#ebe4d3}
+html[data-ag-theme="light"] .ag-contact .ag-form__sum b{color:#0b0b0e}
+html[data-ag-theme="light"] .ag-contact .ag-btn2--line{color:#0b0b0e!important;border-color:rgba(10,10,12,.35)}
+html[data-ag-theme="light"] .ag-contact__call{background:#fffdf8}
+html[data-ag-theme="light"] .ag-contact a{color:#0b0b0e}
+html[data-ag-theme="light"] .ag-contact .ag-btn2--gold{color:#1a1204}
+html[data-ag-theme="light"] .ag-contact__tz b{color:#7a4f00}
+html[data-ag-theme="light"] .ag-contact__tz{color:#5a5446}
+html[data-ag-theme="light"] .ag-sf__x{color:#0b0b0e;border-color:rgba(10,10,12,.3);background:rgba(10,10,12,.04)}
+</style>
+<style>
+/* tap targets and reading size (v6.2) */
+.ag-top__bar{height:44px}
+.ag-top__bar a{display:inline-flex;align-items:center;min-height:44px;padding:0 6px}
+.ag-top__link{padding:12px 14px;min-height:44px;display:inline-flex;align-items:center}
+.ag-top__brand{min-height:44px}
+.ag-footer__list{gap:0}
+.ag-footer__list a{display:inline-block;padding:10px 0}
+.ag-footer__bottom a{display:inline-block;padding:10px 0}
+.ag-hero__link{display:inline-block;padding:14px 4px}
+.ag-hero__note{font-size:.84rem}
+.ag-contact__direct a{display:inline-block;padding:10px 0}
+.ag-contact__direct{gap:0}
+@media (max-width:900px){.ag-top__link{padding:16px 0;min-height:48px}}
+</style>
+
+
+<section class="ag-contact" id="ag-contact" aria-labelledby="ag-contact-title">
+  <div class="ag-contact__inner">
+    <div>
+      <h2 class="ag-contact__title" id="ag-contact-title">Have a Project in Mind? Let's Build Something That Works.</h2>
+      <p class="ag-contact__lead">Tell me what you're looking to build, and I'll get back to you within 24 business hours to discuss the next steps.</p>
+      <p class="ag-contact__promise">I typically respond to project inquiries within 24 business hours. <span>Monday to Friday.</span></p>
+      <p class="ag-contact__tz" id="ag-tz" hidden></p>
+
+      <div class="ag-contact__call" id="book">
+        <h3>Prefer to talk first?</h3>
+        <p>Book a free 20-minute discovery call. We'll go through your project and see whether we're a good fit.</p>
+        <a class="ag-btn2 ag-btn2--line" id="ag-call" href="#">Book a Discovery Call</a>
+      </div>
+
+      <ul class="ag-contact__direct">
+        <li><b>Email</b><a href="mailto:azeez.gazalle3@gmail.com">azeez.gazalle3@gmail.com</a></li>
+        <li><b>WhatsApp</b><a id="ag-wa-link" target="_blank" rel="noopener" href="https://wa.me/2348176376470">+234 817 637 6470</a></li>
+      </ul>
+    </div>
+
+    <form class="ag-form" id="ag-form" novalidate aria-label="Start a project">
+      <div class="ag-form__top"><span id="ag-step-label">Step 1 of 7</span><span>About 1 minute</span></div>
+      <div class="ag-form__bar" aria-hidden="true"><i id="ag-bar"></i></div>
+      <div id="ag-step" aria-live="polite"></div>
+      <div class="ag-form__hp" aria-hidden="true"><label>Leave this empty<input type="text" name="website" id="ag-hp" tabindex="-1" autocomplete="off"></label></div>
+      <p class="ag-form__err" id="ag-err" role="alert"></p>
+      <div class="ag-form__nav" id="ag-nav">
+        <button type="button" class="ag-form__back" id="ag-back" hidden>Back</button>
+        <button type="submit" class="ag-btn2 ag-btn2--gold" id="ag-next">Continue</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script>
+(function(){
+  var root=document.getElementById('ag-contact'); if(!root||root.dataset.agInit) return; root.dataset.agInit='1';
+
+  /* ===================== EDIT THESE ===================== */
+  var WEBHOOK_URL='https://services.leadconnectorhq.com/hooks/EdVxBaYNKVRN7trbxlUJ/webhook-trigger/61650022-ae9e-423b-a1f1-56623e62a561';       // GHL Workflow "Inbound Webhook" URL. Leave '' until you have it: the form then sends the details through WhatsApp instead.
+  var CALENDLY_URL='https://calendly.com/azeez-gazalle3/30min';      // your Calendly link, e.g. 'https://calendly.com/yourname/20min'. Leave '' for now: the button then opens WhatsApp to request a call.
+  var WHATSAPP='2348176376470';
+  /* ======================================================= */
+
+  var STEPS=[
+    {id:'name',label:'What is your name?',hint:'First and last name, so I know who I am talking to.',type:'text',ph:'Your full name',auto:'name',required:true},
+    {id:'email',label:'What is your email address?',hint:'I will reply here.',type:'email',ph:'you@company.com',auto:'email',required:true},
+    {id:'business',label:'What is your business or company called?',hint:'If this is a personal project, write "Personal".',type:'text',ph:'Business name',auto:'organization',required:true},
+    {id:'projectType',label:'What type of project is it?',hint:'Pick the closest match.',type:'choice',required:true,options:['Landing page','Business website','Sales funnel','Web application','Website redesign','Website maintenance','Not sure yet']},
+    {id:'budget',label:'What is your estimated budget?',hint:'In US dollars. A rough range is fine.',type:'choice',required:true,options:['Under $300','$300 to $750','$750 to $1,500','$1,500 to $5,000','$5,000 or more','Not sure yet']},
+    {id:'timeline',label:'When do you need it?',hint:'Your expected timeline.',type:'choice',required:true,options:['As soon as possible','Within 1 month','1 to 2 months','Flexible']},
+    {id:'description',label:'Tell me about the project.',hint:'What you want to build, who it is for, and anything that matters to you.',type:'textarea',ph:'A few sentences are enough.',required:true,min:15}
+  ];
+  var data={}, idx=0, sent=false;
+  var el={step:document.getElementById('ag-step'),err:document.getElementById('ag-err'),next:document.getElementById('ag-next'),back:document.getElementById('ag-back'),
+    bar:document.getElementById('ag-bar'),label:document.getElementById('ag-step-label'),form:document.getElementById('ag-form'),nav:document.getElementById('ag-nav'),hp:document.getElementById('ag-hp'),top:root.querySelector('.ag-form__top')};
+  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+
+  /* secondary call button */
+  var call=document.getElementById('ag-call');
+  function waLink(msg){ return 'https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(msg); }
+  if(CALENDLY_URL){ call.href=CALENDLY_URL; call.target='_blank'; call.rel='noopener'; }
+  else{ call.href=waLink("Hi Azeez, I'd like to book a free 20-minute discovery call."); call.target='_blank'; call.rel='noopener'; }
+
+  function render(){
+    var s=STEPS[idx], last=idx===STEPS.length-1, v=data[s.id]||'', html='';
+    el.label.textContent='Step '+(idx+1)+' of '+STEPS.length; el.bar.style.width=((idx+1)/STEPS.length*100)+'%';
+    html+='<fieldset><legend id="ag-q">'+esc(s.label)+'</legend><p class="ag-form__hint">'+esc(s.hint)+'</p>';
+    if(s.type==='choice'){
+      html+='<div class="ag-form__choices" role="radiogroup" aria-labelledby="ag-q">';
+      s.options.forEach(function(o,n){ html+='<label class="ag-form__choice"><input type="radio" name="'+s.id+'" value="'+esc(o)+'"'+(v===o?' checked':'')+'><span>'+esc(o)+'</span></label>'; });
+      html+='</div>';
+    }else if(s.type==='textarea'){
+      html+='<textarea id="ag-f" name="'+s.id+'" placeholder="'+esc(s.ph||'')+'" aria-labelledby="ag-q">'+esc(v)+'</textarea>';
+    }else{
+      html+='<input id="ag-f" type="'+s.type+'" name="'+s.id+'" value="'+esc(v)+'" placeholder="'+esc(s.ph||'')+'" autocomplete="'+(s.auto||'off')+'" aria-labelledby="ag-q">';
+    }
+    html+='</fieldset>';
+    el.step.innerHTML=html; el.err.textContent='';
+    el.back.hidden=idx===0;
+    el.next.textContent=last?(WEBHOOK_URL?'Send project details':'Send on WhatsApp'):'Continue';
+    var f=document.getElementById('ag-f'); if(f){ f.focus({preventScroll:true}); }
+    if(s.type==='choice'){ var inputs=el.step.querySelectorAll('input[type=radio]'); inputs.forEach(function(r){ r.addEventListener('change',function(){ data[s.id]=r.value; el.err.textContent=''; }); }); }
+  }
+  function read(){ var s=STEPS[idx]; if(s.type==='choice'){ var c=el.step.querySelector('input[type=radio]:checked'); data[s.id]=c?c.value:''; } else { var f=document.getElementById('ag-f'); data[s.id]=f?f.value.trim():''; } }
+  function validate(){
+    var s=STEPS[idx], v=data[s.id]||'';
+    if(s.required&&!v){ return s.type==='choice'?'Please choose one option.':'Please fill this in to continue.'; }
+    if(s.type==='email'&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) return 'Please enter a valid email address, like name@company.com.';
+    if(s.min&&v.length<s.min) return 'Please add a little more detail (at least '+s.min+' characters).';
+    return '';
+  }
+  function summaryText(){
+    return "Hi Azeez, I'd like to start a project.\n\nName: "+data.name+"\nEmail: "+data.email+"\nBusiness: "+data.business+"\nProject type: "+data.projectType+"\nBudget: "+data.budget+"\nTimeline: "+data.timeline+"\n\nAbout the project:\n"+data.description;
+  }
+  function done(viaWhatsApp){
+    sent=true; el.nav.style.display='none'; el.top.style.display='none'; root.querySelector('.ag-form__bar').style.display='none'; el.err.textContent='';
+    var first=esc((data.name||'').split(' ')[0]||'there');
+    var h='<div class="ag-form__done"><h3>'+(viaWhatsApp?'One last step, '+first:'Thank you, '+first)+'.</h3>';
+    h+= viaWhatsApp
+      ? '<p>Your details are ready. Tap the button to send them to me on WhatsApp. I reply within 24 business hours, Monday to Friday.</p><div class="ag-form__row"><a class="ag-btn2 ag-btn2--gold" target="_blank" rel="noopener" href="'+waLink(summaryText())+'">Send on WhatsApp</a></div>'
+      : '<p>Your project details are in. I will reply to '+esc(data.email)+' within 24 business hours, Monday to Friday.</p><ul class="ag-form__sum"><li>Project<b>'+esc(data.projectType)+'</b></li><li>Budget<b>'+esc(data.budget)+'</b></li><li>Timeline<b>'+esc(data.timeline)+'</b></li></ul><div class="ag-form__row"><a class="ag-btn2 ag-btn2--line" href="'+call.href+'" target="_blank" rel="noopener">Book a Discovery Call</a></div>';
+    h+='</div>'; el.step.innerHTML=h;
+  }
+  function submit(){
+    if(el.hp.value){ done(false); return; }            // honeypot: bots fill this field
+    if(!WEBHOOK_URL){ done(true); return; }
+    var payload={name:data.name,email:data.email,business:data.business,projectType:data.projectType,budget:data.budget,timeline:data.timeline,description:data.description,source:'portfolio-website',page:location.href,submittedAt:new Date().toISOString()};
+    el.next.disabled=true; el.next.textContent='Sending...'; el.err.textContent='';
+    function fail(){ el.next.disabled=false; el.next.textContent='Send project details'; el.err.innerHTML='That did not go through. Please try again, or <a href="'+waLink(summaryText())+'" target="_blank" rel="noopener">send it on WhatsApp</a>.'; }
+    fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+      .then(function(r){ if(r.ok){ done(false); } else { fail(); } })
+      .catch(function(){
+        /* some webhooks do not allow cross-site replies; send once more without reading the reply */
+        fetch(WEBHOOK_URL,{method:'POST',mode:'no-cors',body:JSON.stringify(payload)}).then(function(){ done(false); }).catch(fail);
+      });
+  }
+  el.form.addEventListener('submit',function(e){
+    e.preventDefault(); if(sent) return; read(); var m=validate(); if(m){ el.err.textContent=m; return; }
+    if(idx<STEPS.length-1){ idx++; render(); } else { submit(); }
+  });
+  el.back.addEventListener('click',function(){ if(idx>0){ read(); idx--; render(); } });
+  render();
+})();
+  (function(){try{var el=document.getElementById('ag-tz');if(!el||!window.Intl)return;
+    var tz=Intl.DateTimeFormat().resolvedOptions().timeZone;
+    var mine=new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+    var lag=new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',timeZone:'Africa/Lagos'});
+    el.innerHTML='Your local time is <b>'+mine+'</b> ('+tz.replace(/_/g,' ')+'). It is <b>'+lag+'</b> in Nigeria. Business hours are Monday to Friday.';el.hidden=false;}catch(e){}})();
+</script>

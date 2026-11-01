@@ -1,0 +1,90 @@
+<!-- ========== AG SECTION: payment-terms (Services page) ========== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  .ag-pay{--ag-bg:#060607;--ag-surface:#111113;--ag-surface-2:#17171a;--ag-line:rgba(255,255,255,.12);--ag-text:#fbf6ea;--ag-muted:#b9b2a2;--ag-gold:#f0bb4a;--ag-gold-ink:#1a1204;
+    position:relative;background:var(--ag-bg);color:var(--ag-text);font-family:'Figtree',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:100px 24px;box-sizing:border-box;overflow:hidden}
+  .ag-pay::before{content:"";position:absolute;left:50%;top:-10%;width:90%;height:60%;transform:translateX(-50%);background:radial-gradient(ellipse at center,rgba(240,187,74,.10),transparent 70%);pointer-events:none}
+  .ag-pay *,.ag-pay *::before,.ag-pay *::after{box-sizing:border-box}
+  .ag-pay__wrap{position:relative;max-width:1248px;margin:0 auto}
+  .ag-pay__head{max-width:760px;margin-bottom:48px}
+  .ag-pay__head--row{max-width:none;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .ag-pay__kick{display:inline-flex;align-items:center;gap:10px;padding:7px 16px 7px 8px;border:1px solid var(--ag-line);border-radius:999px;font-size:.86rem;color:var(--ag-muted);background:rgba(255,255,255,.05)}
+  .ag-pay__kick img{width:26px;height:26px}
+  .ag-pay__title{margin:20px 0 0;font-weight:800;letter-spacing:-.03em;line-height:1.08;font-size:clamp(1.9rem,2.3vw + 1rem,3.1rem)}
+  .ag-pay__title em{font-style:normal;color:var(--ag-gold)}
+  .ag-pay__lead{margin:16px 0 0;font-size:1.1rem;line-height:1.6;color:var(--ag-muted);max-width:56ch}
+  .ag-pay__link{display:inline-flex;align-items:center;gap:8px;color:var(--ag-gold);font-weight:700;text-decoration:none;font-size:1rem;white-space:nowrap}
+  .ag-pay__link:hover{text-decoration:underline;text-underline-offset:4px}
+  .ag-pay__btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:14px;border:1px solid rgba(255,255,255,.22);color:var(--ag-text);text-decoration:none;font-weight:700;transition:border-color .2s,transform .2s,background .2s,box-shadow .2s}
+  .ag-pay__btn:hover{border-color:var(--ag-gold);transform:translateY(-2px)}
+  .ag-pay__btn--gold{background:var(--ag-gold);color:var(--ag-gold-ink);border-color:var(--ag-gold);box-shadow:0 12px 36px -8px rgba(240,187,74,.65)}
+  .ag-pay__btn--gold:hover{background:#ffd070;box-shadow:0 16px 44px -8px rgba(240,187,74,.9)}
+  .ag-pay.ag-pre [data-r]{opacity:0;filter:blur(8px);transform:translateY(22px)}
+  .ag-pay [data-r]{transition:opacity .8s cubic-bezier(.2,.7,.2,1),filter .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0) * 80ms)}
+  .ag-pay.ag-pre [data-r].ag-in{opacity:1;filter:none;transform:none}
+  .ag-pay .ag-ph{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;color:rgba(240,187,74,.85);font-weight:700;font-size:.9rem;border:1.5px dashed rgba(240,187,74,.55);background:repeating-linear-gradient(135deg,rgba(240,187,74,.05) 0 12px,transparent 12px 24px)}
+  .ag-pay .ag-ph svg{width:34px;height:34px;fill:currentColor;opacity:.8}
+  @media (max-width:700px){.ag-pay{padding:68px 20px}}
+  @media (prefers-reduced-motion:reduce){.ag-pay.ag-pre [data-r]{opacity:1;filter:none;transform:none}.ag-pay [data-r]{transition:none}}
+
+  .ag-pay__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .ag-pay__c{padding:30px;border:1px solid var(--ag-line);border-radius:24px;background:var(--ag-surface)}
+  .ag-pay__c h3{margin:0;font-size:1.25rem;font-weight:800;letter-spacing:-.02em}
+  .ag-pay__c .ag-pay__big{display:block;margin:14px 0 4px;font-size:2.4rem;font-weight:800;letter-spacing:-.04em;color:var(--ag-gold);line-height:1}
+  .ag-pay__c p,.ag-pay__c li{color:var(--ag-muted);line-height:1.6;font-size:.98rem}
+  .ag-pay__c ul{margin:12px 0 0;padding-left:18px}
+  .ag-pay__terms{margin-top:20px;padding:30px;border:1px solid var(--ag-line);border-radius:24px;background:var(--ag-surface-2)}
+  .ag-pay__terms h3{margin:0 0 14px;font-size:1.15rem;font-weight:800}
+  .ag-pay__terms ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px 36px}
+  .ag-pay__terms li{position:relative;padding-left:24px;color:var(--ag-muted);line-height:1.55;font-size:.96rem}
+  .ag-pay__terms li::before{content:"";position:absolute;left:0;top:.5em;width:8px;height:8px;border-radius:50%;background:var(--ag-gold)}
+  @media (max-width:900px){.ag-pay__grid{grid-template-columns:1fr}.ag-pay__terms ul{grid-template-columns:1fr}}
+</style>
+<section class="ag-pay" id="ag-pay" aria-label="Payment terms">
+  <div class="ag-pay__wrap">
+    <div class="ag-pay__head"><div class="ag-pay__kick" data-r><img data-em="Money bag|money_bag" alt=""><span>Payment terms</span></div><h2 class="ag-pay__title" data-r style="--i:1">Simple, <em>transparent</em> payment.</h2></div>
+    <div class="ag-pay__grid">
+      <div class="ag-pay__c" data-r><h3>Standard projects</h3><span class="ag-pay__big">50 / 50</span><p>Landing pages, business websites and standard funnels.</p><ul><li>50% upfront reserves your slot and starts the work.</li><li>50% before launch, after the agreed deliverables are approved.</li></ul></div>
+      <div class="ag-pay__c" data-r style="--i:1"><h3>Web applications</h3><span class="ag-pay__big">40 / 30 / 30</span><p>Milestone-based. The schedule may change with scope.</p><ul><li>40% upfront.</li><li>30% after the core design and development milestone.</li><li>30% before final deployment and handover.</li></ul></div>
+      <div class="ag-pay__c" data-r style="--i:2"><h3>Monthly services</h3><span class="ag-pay__big">Monthly</span><p>Website maintenance is billed monthly in advance. Scope, service period, cancellation terms and any response-time commitments are set out in the service agreement.</p></div>
+    </div>
+    <div class="ag-pay__terms" data-r><h3>Good to know</h3><ul>
+      <li>Work begins after the initial payment and receipt of required project materials.</li>
+      <li>Quotes are valid for 14 calendar days unless stated otherwise.</li>
+      <li>Work outside the agreed scope needs a separate quotation.</li>
+      <li>Domains, hosting, premium software and third-party fees are charged separately unless included.</li>
+      <li>Timelines depend on timely feedback, approvals and content.</li>
+      <li>Final deliverables and account access are handed over once all payments are settled.</li></ul></div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var root=document.getElementById('ag-pay'); if(!root||root.getAttribute('data-ag-init')) return; root.setAttribute('data-ag-init','1');
+  var BASE='https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/';
+  function em(){var im=root.querySelectorAll('img[data-em]');for(var i=0;i<im.length;i++){if(im[i].getAttribute('src'))continue;var p=im[i].getAttribute('data-em').split('|');im[i].onerror=function(){this.style.visibility='hidden'};im[i].src=(window.AGE&&window.AGE[p[0]])||(BASE+encodeURIComponent(p[0])+'/3D/'+p[1]+'_3d.png');}}
+  var LINKS={ home:'/', work:'/projects', services:'/services', about:'/about', contact:'/contact' };
+  var CALENDLY_URL='', WHATSAPP='2348176376470';
+  
+  em();
+  var al=root.querySelectorAll('[data-ag-link]');for(var j=0;j<al.length;j++){var k=al[j].getAttribute('data-ag-link');if(LINKS[k])al[j].setAttribute('href',LINKS[k]);}
+  var calls=root.querySelectorAll('[data-ag-call]');for(var c=0;c<calls.length;c++){calls[c].setAttribute('href',CALENDLY_URL||('https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent("Hi Azeez, I'd like to book a free 20-minute discovery call.")));}
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els=root.querySelectorAll('[data-r]');
+  if('IntersectionObserver' in window&&!reduce){
+    root.className+=' ag-pre';
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('ag-in');io.unobserve(e.target);}});},{threshold:.1,rootMargin:'0px 0px -5% 0px'});
+    for(var i=0;i<els.length;i++)io.observe(els[i]);
+    setTimeout(function(){for(var i=0;i<els.length;i++)els[i].classList.add('ag-in');},7000);
+  }
+  var fine=window.matchMedia&&window.matchMedia('(pointer:fine)').matches;
+  if(fine&&!reduce){
+    root.querySelectorAll('[data-tilt]').forEach(function(c){
+      c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform='perspective(900px) rotateY('+(x*10).toFixed(2)+'deg) rotateX('+(-y*10).toFixed(2)+'deg) translateY(-4px)';});
+      c.addEventListener('mouseleave',function(){c.style.transform='';});
+    });
+  }
+})();
+</script>

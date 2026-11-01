@@ -1,0 +1,83 @@
+<!-- ========== AG SECTION: process (Home and Services) ========== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  .ag-process{--ag-bg:#060607;--ag-surface:#0e0e10;--ag-surface-2:#151518;--ag-line:rgba(255,255,255,.1);--ag-text:#fbf6ea;--ag-muted:#a8a193;--ag-gold:#f0bb4a;--ag-gold-ink:#1a1204;
+    position:relative;background:var(--ag-bg);color:var(--ag-text);font-family:'Figtree',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:96px 24px;box-sizing:border-box;overflow:hidden}
+  .ag-process *,.ag-process *::before,.ag-process *::after{box-sizing:border-box}
+  .ag-process__wrap{max-width:1248px;margin:0 auto}
+  .ag-process__head{max-width:720px;margin-bottom:48px}
+  .ag-process__kick{display:inline-flex;align-items:center;gap:10px;padding:7px 16px 7px 8px;border:1px solid var(--ag-line);border-radius:999px;font-size:.86rem;color:var(--ag-muted);background:rgba(255,255,255,.03)}
+  .ag-process__kick img{width:26px;height:26px}
+  .ag-process__title{margin:20px 0 0;font-weight:800;letter-spacing:-.03em;line-height:1.06;font-size:clamp(2rem,2.6vw + 1rem,3.4rem)}
+  .ag-process__title em{font-style:normal;color:var(--ag-gold)}
+  .ag-process__lead{margin:16px 0 0;font-size:1.1rem;line-height:1.6;color:var(--ag-muted);max-width:56ch}
+  .ag-process.ag-pre [data-r]{opacity:0;filter:blur(8px);transform:translateY(22px)}
+  .ag-process [data-r]{transition:opacity .8s cubic-bezier(.2,.7,.2,1),filter .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0) * 80ms)}
+  .ag-process.ag-pre [data-r].ag-in{opacity:1;filter:none;transform:none}
+  @media (max-width:700px){.ag-process{padding:68px 20px}}
+  @media (prefers-reduced-motion:reduce){.ag-process.ag-pre [data-r]{opacity:1;filter:none;transform:none}.ag-process [data-r]{transition:none}}
+
+  .ag-process__list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .ag-process__step{padding:26px;border:1px solid var(--ag-line);border-radius:22px;background:var(--ag-surface);transition:transform .25s ease-out,border-color .25s;will-change:transform}
+  .ag-process__step:hover{border-color:rgba(229,176,64,.5)}
+  .ag-process__top{display:flex;align-items:flex-start;justify-content:space-between}
+  .ag-process__top img{width:68px;height:68px;filter:drop-shadow(0 12px 12px rgba(0,0,0,.5))}
+  .ag-process__n{font-weight:800;font-size:1rem;color:var(--ag-gold)}
+  .ag-process__step h3{margin:18px 0 0;font-size:1.3rem;font-weight:800;letter-spacing:-.02em}
+  .ag-process__time{display:inline-block;margin-top:8px;padding:5px 12px;border-radius:999px;background:rgba(229,176,64,.12);color:var(--ag-gold);font-size:.8rem;font-weight:700}
+  .ag-process__step p{margin:14px 0 0;color:var(--ag-muted);line-height:1.6;font-size:.98rem}
+  .ag-process__table{margin-top:28px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .ag-process__t{padding:18px 20px;border:1px solid var(--ag-line);border-radius:16px;background:var(--ag-surface-2)}
+  .ag-process__t b{display:block;font-size:.84rem;color:var(--ag-muted);font-weight:600}
+  .ag-process__t span{display:block;margin-top:6px;font-weight:800;font-size:1.1rem;letter-spacing:-.01em}
+  .ag-process__fine{margin:18px 0 0;color:var(--ag-muted);font-size:.9rem;line-height:1.6;max-width:70ch}
+  @media (max-width:980px){.ag-process__list{grid-template-columns:1fr 1fr}.ag-process__table{grid-template-columns:1fr 1fr}}
+  @media (max-width:640px){.ag-process__list{grid-template-columns:1fr}}
+</style>
+<section class="ag-process" id="ag-process" aria-label="How I work">
+  <div class="ag-process__wrap">
+    <div class="ag-process__head">
+      <div class="ag-process__kick" data-r><img data-em="Compass|compass" alt=""><span>How I work</span></div>
+      <h2 class="ag-process__title" data-r style="--i:1">From first conversation to <em>launch</em>.</h2>
+      <p class="ag-process__lead" data-r style="--i:2">A clear, collaborative process that keeps things organised and avoids surprises.</p>
+    </div>
+    <ol class="ag-process__list"><li class="ag-process__step" data-r data-tilt style="--i:0"><div class="ag-process__top"><img data-em="Speech balloon|speech_balloon" alt=""><span class="ag-process__n">01</span></div><h3>Discovery</h3><span class="ag-process__time">1 to 2 business days</span><p>We talk about your business, goals, audience, features, budget and timeline, then define the scope.</p></li><li class="ag-process__step" data-r data-tilt style="--i:1"><div class="ag-process__top"><img data-em="Envelope|envelope" alt=""><span class="ag-process__n">02</span></div><h3>Proposal & kickoff</h3><span class="ag-process__time">1 to 3 business days</span><p>You get a tailored proposal with deliverables, price, timeline and payment terms. Work starts once it is approved and the first payment is in.</p></li><li class="ag-process__step" data-r data-tilt style="--i:2"><div class="ag-process__top"><img data-em="Artist palette|artist_palette" alt=""><span class="ag-process__n">03</span></div><h3>Structure & design</h3><span class="ag-process__time">3 to 7 business days</span><p>I plan the page structure, user journey and visual direction. You review and give feedback before development.</p></li><li class="ag-process__step" data-r data-tilt style="--i:3"><div class="ag-process__top"><img data-em="Laptop|laptop" alt=""><span class="ag-process__n">04</span></div><h3>Development</h3><span class="ag-process__time">3 to 15+ business days</span><p>The approved design becomes responsive pages, forms, integrations and the features in scope.</p></li><li class="ag-process__step" data-r data-tilt style="--i:4"><div class="ag-process__top"><img data-em="Magic wand|magic_wand" alt=""><span class="ag-process__n">05</span></div><h3>Testing & revisions</h3><span class="ag-process__time">2 to 5 business days</span><p>I test across screen sizes, check forms and integrations, and fix issues in scope. You get revision rounds to refine the result.</p></li><li class="ag-process__step" data-r data-tilt style="--i:5"><div class="ag-process__top"><img data-em="Rocket|rocket" alt=""><span class="ag-process__n">06</span></div><h3>Launch & handover</h3><span class="ag-process__time">1 to 2 business days</span><p>Final payment, launch, domain connection where applicable, final checks, and a handover with access details and guidance.</p></li></ol>
+    <div class="ag-process__table" data-r>
+      <div class="ag-process__t"><b>Landing page</b><span>5 to 10 business days</span></div>
+      <div class="ag-process__t"><b>Business website</b><span>2 to 3 weeks</span></div>
+      <div class="ag-process__t"><b>Sales funnel</b><span>2 to 4 weeks</span></div>
+      <div class="ag-process__t"><b>Web application MVP</b><span>4 to 10+ weeks</span></div>
+    </div>
+    <p class="ag-process__fine" data-r>Timelines begin once the project is approved, the first payment is received and the required materials are available. Complex features or scope changes can extend delivery. Your exact timeline is confirmed in your proposal.</p>
+  </div>
+</section>
+
+<script>
+(function(){
+  var root=document.getElementById('ag-process'); if(!root||root.getAttribute('data-ag-init')) return; root.setAttribute('data-ag-init','1');
+  var BASE='https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/';
+  function em(scope){var im=(scope||root).querySelectorAll('img[data-em]');for(var i=0;i<im.length;i++){if(im[i].getAttribute('src'))continue;var p=im[i].getAttribute('data-em').split('|');im[i].onerror=function(){this.style.visibility='hidden'};im[i].src=(window.AGE&&window.AGE[p[0]])||(BASE+encodeURIComponent(p[0])+'/3D/'+p[1]+'_3d.png');}}
+  
+  em();
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els=root.querySelectorAll('[data-r]');
+  if('IntersectionObserver' in window&&!reduce){
+    root.className+=' ag-pre';
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('ag-in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    for(var i=0;i<els.length;i++)io.observe(els[i]);
+    setTimeout(function(){for(var i=0;i<els.length;i++)els[i].classList.add('ag-in');},6000);
+  }
+  /* 3D tilt on cards */
+  var fine=window.matchMedia&&window.matchMedia('(pointer:fine)').matches;
+  if(fine&&!reduce){
+    var cards=root.querySelectorAll('[data-tilt]');
+    cards.forEach(function(c){
+      c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+        c.style.transform='perspective(900px) rotateY('+(x*10).toFixed(2)+'deg) rotateX('+(-y*10).toFixed(2)+'deg) translateY(-4px)';});
+      c.addEventListener('mouseleave',function(){c.style.transform='';});
+    });
+  }
+})();
+</script>

@@ -1,0 +1,118 @@
+{
+ "cropzone-africa": {
+  "cover": "assets/projects/cropzone-africa-cover.webp",
+  "shots": [
+   "assets/projects/cropzone-africa-screen-01.webp",
+   "assets/projects/cropzone-africa-screen-02.webp",
+   "assets/projects/cropzone-africa-screen-03.webp",
+   "assets/projects/cropzone-africa-screen-04.webp",
+   "assets/projects/cropzone-africa-screen-05.webp",
+   "assets/projects/cropzone-africa-screen-06.webp"
+  ]
+ },
+ "nubid-engineering": {
+  "cover": "assets/projects/nubid-engineering-cover.webp",
+  "shots": [
+   "assets/projects/nubid-engineering-screen-01.webp",
+   "assets/projects/nubid-engineering-screen-02.webp",
+   "assets/projects/nubid-engineering-screen-03.webp",
+   "assets/projects/nubid-engineering-screen-04.webp",
+   "assets/projects/nubid-engineering-screen-05.webp",
+   "assets/projects/nubid-engineering-screen-06.webp"
+  ]
+ },
+ "quietpalm": {
+  "cover": "assets/projects/quietpalm-cover.webp",
+  "shots": [
+   "assets/projects/quietpalm-screen-01.webp",
+   "assets/projects/quietpalm-screen-02.webp",
+   "assets/projects/quietpalm-screen-03.webp",
+   "assets/projects/quietpalm-screen-04.webp",
+   "assets/projects/quietpalm-screen-05.webp"
+  ]
+ },
+ "caliph-engineering": {
+  "cover": "assets/projects/caliph-engineering-cover.webp",
+  "shots": [
+   "assets/projects/caliph-engineering-screen-01.webp",
+   "assets/projects/caliph-engineering-screen-02.webp",
+   "assets/projects/caliph-engineering-screen-03.webp",
+   "assets/projects/caliph-engineering-screen-04.webp",
+   "assets/projects/caliph-engineering-screen-05.webp",
+   "assets/projects/caliph-engineering-screen-06.webp"
+  ]
+ },
+ "pilgrim-prive": {
+  "cover": "assets/projects/pilgrim-prive-cover.webp",
+  "shots": [
+   "assets/projects/pilgrim-prive-screen-01.webp",
+   "assets/projects/pilgrim-prive-screen-02.webp",
+   "assets/projects/pilgrim-prive-screen-03.webp",
+   "assets/projects/pilgrim-prive-screen-04.webp",
+   "assets/projects/pilgrim-prive-screen-05.webp"
+  ]
+ },
+ "proventa": {
+  "cover": "assets/projects/proventa-cover.webp",
+  "shots": [
+   "assets/projects/proventa-screen-01.webp",
+   "assets/projects/proventa-screen-02.webp",
+   "assets/projects/proventa-screen-03.webp",
+   "assets/projects/proventa-screen-04.webp",
+   "assets/projects/proventa-screen-05.webp",
+   "assets/projects/proventa-screen-06.webp"
+  ]
+ },
+ "faucet-water-purifier-funnel": {
+  "cover": "assets/projects/faucet-water-purifier-funnel-cover.webp",
+  "shots": [
+   "assets/projects/faucet-water-purifier-funnel-screen-01.webp",
+   "assets/projects/faucet-water-purifier-funnel-screen-02.webp",
+   "assets/projects/faucet-water-purifier-funnel-screen-03.webp",
+   "assets/projects/faucet-water-purifier-funnel-screen-04.webp",
+   "assets/projects/faucet-water-purifier-funnel-screen-05.webp",
+   "assets/projects/faucet-water-purifier-funnel-screen-06.webp",
+   "assets/projects/faucet-water-purifier-funnel-screen-07.webp"
+  ]
+ },
+ "ginseng-five-treasure-tea-funnel": {
+  "cover": "assets/projects/ginseng-five-treasure-tea-funnel-cover.webp",
+  "shots": [
+   "assets/projects/ginseng-five-treasure-tea-funnel-screen-01.webp",
+   "assets/projects/ginseng-five-treasure-tea-funnel-screen-02.webp",
+   "assets/projects/ginseng-five-treasure-tea-funnel-screen-03.webp",
+   "assets/projects/ginseng-five-treasure-tea-funnel-screen-04.webp",
+   "assets/projects/ginseng-five-treasure-tea-funnel-screen-05.webp"
+  ]
+ },
+ "talk-to-ai-like-a-pro": {
+  "cover": "assets/projects/talk-to-ai-like-a-pro-cover.webp",
+  "shots": [
+   "assets/projects/talk-to-ai-like-a-pro-screen-01.webp",
+   "assets/projects/talk-to-ai-like-a-pro-screen-02.webp",
+   "assets/projects/talk-to-ai-like-a-pro-screen-03.webp",
+   "assets/projects/talk-to-ai-like-a-pro-screen-04.webp",
+   "assets/projects/talk-to-ai-like-a-pro-screen-05.webp"
+  ]
+ },
+ "adjustable-laptop-workstation": {
+  "cover": "assets/projects/adjustable-laptop-workstation-cover.webp",
+  "shots": [
+   "assets/projects/adjustable-laptop-workstation-screen-01.webp",
+   "assets/projects/adjustable-laptop-workstation-screen-02.webp",
+   "assets/projects/adjustable-laptop-workstation-screen-03.webp",
+   "assets/projects/adjustable-laptop-workstation-screen-04.webp",
+   "assets/projects/adjustable-laptop-workstation-screen-05.webp"
+  ]
+ },
+ "foldable-hand-fan": {
+  "cover": "assets/projects/foldable-hand-fan-cover.webp",
+  "shots": [
+   "assets/projects/foldable-hand-fan-screen-01.webp",
+   "assets/projects/foldable-hand-fan-screen-02.webp",
+   "assets/projects/foldable-hand-fan-screen-03.webp",
+   "assets/projects/foldable-hand-fan-screen-04.webp",
+   "assets/projects/foldable-hand-fan-screen-05.webp"
+  ]
+ }
+}
