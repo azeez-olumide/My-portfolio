@@ -43,6 +43,17 @@ Funnels/Websites → **Websites** → your site (create one called "Azeez Gazall
 
 If your GHL does not allow a slash in a path, create the page paths as `work-cropzone-africa` and so on, then change `work:'/work'` entries and the project links as described in section 8.
 
+## 4b. Connecting the pages to each other (one table, in `00-global`)
+All menu links, buttons and project cards are rewritten from a single table at the bottom of `00-global`, so you never edit links in other blocks. Every page must contain `00-global`.
+1. Publish your pages and open each one in the browser. Note the real address of each (for example `https://yourdomain.com/work`).
+2. In `00-global`, find `AG SITE LINKS` and edit:
+   - `MAP`: put the real path of each page on the right-hand side, e.g. `'/work':'/our-work'`.
+   - `PROJECTS`: `'/work/'` if your project paths are `work/<slug>`; `'/work-'` if GHL only allowed flat paths like `work-cropzone-africa`.
+   - `BASE`: a prefix if all your pages sit under a folder, e.g. `'/portfolio'`.
+   - `DOMAIN`: your full domain (e.g. `'https://www.azeezgazalle.com'`) if relative links do not work in your account, or while testing on a GHL preview address.
+3. Re-paste `00-global` into every page (or, better, put it once in Settings, Custom Code, Header so all pages share it).
+Links to pages that do not exist yet will 404, so create all pages first.
+
 ## 5. Build each page (blocks in this exact order)
 For every block: in the builder add a **Section → Row → Column → Custom JS/HTML** element, paste the file contents, save. Use one section per block, set the section **padding to 0** and **background to none**, so GHL adds no extra spacing.
 
