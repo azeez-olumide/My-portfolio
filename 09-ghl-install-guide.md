@@ -8,6 +8,9 @@ You will build 8 + 11 pages. Each page is a normal GHL page with one **Custom Co
 - `08-v7-page-map-and-assets.md`: the page map (kept for reference).
 Everything else (hero portrait, avatars, 3D emoji, logo) is **already embedded inside the section files**. You do not upload it.
 
+## 0b. Shortcut: one core block (`ghl/00-site-core.html`)
+`00-loader`, `00-global`, `00-emoji-pack`, `00-avatars` and `00-projects` are also supplied already merged as `ghl/00-site-core.html`. Paste that single file once at the top of every page (or once in the site-wide Header code) **instead of** those five blocks, never both. Your image links go in its `00-projects` part.
+
 ## 1. Before you start
 1. Unzip the file on your computer. Open files in a plain text editor (Notepad, VS Code). Do not use Word.
 2. Open the file, press `Ctrl+A`, then `Ctrl+C`. Paste it whole into the GHL code box. Never paste half a file.
