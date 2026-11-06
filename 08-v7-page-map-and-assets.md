@@ -47,3 +47,4 @@ Typos corrected: "Semptember" to September 2026, "Ltd" for "Lts.", "[cite: n]" r
 - Four real testimonials added to `home-testimonials`.
 - Client name removed from Cropzone Africa.
 - Footer: LinkedIn removed; Instagram and Facebook left out for now (add `{label:'Instagram',url:'...'}` to the `SOCIAL` array in `footer` later).
+- Links: `00-global` holds a single link table (DOMAIN azeezgazalle.com; projects are `/project-1` to `/project-11`).

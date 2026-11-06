@@ -30,17 +30,18 @@
      1. BASE: text put in front of every address. Leave '' if your pages live at yourdomain.com/work, /about ...
         If GHL puts them under a funnel or site path, e.g. yourdomain.com/portfolio/work, set BASE:'/portfolio'.
      2. MAP: the real address of each page in GHL. Left side = the address the code uses, right side = yours.
-     3. PROJECTS: the start of each project page address. Use '/work/' if you made paths like work/cropzone-africa,
-        or '/work-' if GHL only let you make flat paths like work-cropzone-africa.
+     3. PROJECTS + NUM: your project pages are named by number (project-1 ... project-11). NUM says which number
+        belongs to which project (same order as the Work page: 1 Cropzone ... 11 Foldable Fan).
      4. FULL: set true if you want links to use your full domain, e.g. DOMAIN:'https://www.yourdomain.com'. -->
 <script>
 (function(){
   if(window.__agLinks) return; window.__agLinks=1;
   /* ---- EDIT ---- */
-  var DOMAIN='';                 /* optional, e.g. 'https://www.azeezgazalle.com' (no trailing slash) */
+  var DOMAIN='https://azeezgazalle.com'; /* no trailing slash; use https://www.azeezgazalle.com if that is your live address */
   var BASE='';                   /* optional path prefix, e.g. '/portfolio' */
   var MAP={ '/':'/', '/work':'/work', '/services':'/services', '/process':'/process', '/about':'/about', '/contact':'/contact', '/start':'/start' };
-  var PROJECTS='/work/';         /* '/work/' or '/work-' */
+  var PROJECTS='/project-';      /* project pages are /project-1 ... /project-11 */
+  var NUM={'cropzone-africa':1,'nubid-engineering':2,'quietpalm':3,'caliph-engineering':4,'pilgrim-prive':5,'proventa':6,'faucet-water-purifier-funnel':7,'ginseng-five-treasure-tea-funnel':8,'talk-to-ai-like-a-pro':9,'adjustable-laptop-workstation':10,'foldable-hand-fan':11};
   /* -------------- */
   function fix(a){
     var h=a.getAttribute('href'); if(!h||h.charAt(0)!=='/'||h.charAt(1)==='/') return;
@@ -48,7 +49,7 @@
     var m=h.match(/^([^?#]*)([?#].*)?$/), p=m[1], rest=m[2]||'', out;
     if(p.length>1&&p.charAt(p.length-1)==='/') p=p.slice(0,-1);
     if(MAP.hasOwnProperty(p)) out=MAP[p];
-    else if(p.indexOf('/work/')===0) out=PROJECTS+p.slice(6);
+    else if(p.indexOf('/work/')===0){var k=p.slice(6); out=NUM[k]?PROJECTS+NUM[k]:(MAP['/work']||'/work');}
     else out=p;
     out=DOMAIN+BASE+out; if(out==='') out='/';
     a.setAttribute('href',out+rest); a.setAttribute('data-ag-fixed',out+rest);
