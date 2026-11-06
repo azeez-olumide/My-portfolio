@@ -700,17 +700,20 @@ sec('home-process','ag-hproc','''
 # ---------- HOME TESTIMONIALS (placeholder wall) ----------
 sec('home-testimonials','ag-htest','''
 .__P__{padding-left:0;padding-right:0;padding-bottom:130px}
-.__P__ .ag-tt{padding:0 24px;max-width:1248px;margin:0 auto 70px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.__P__ .ag-tt{padding:0 24px;max-width:1248px;margin:0 auto 44px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
 .__P__ h2{margin:0;font-weight:900;text-transform:uppercase;letter-spacing:-.04em;line-height:.95;font-size:clamp(2.2rem,5.4vw,5.2rem);max-width:12ch}
 .__P__ .ag-tt img{width:clamp(54px,7vw,100px);animation:ag-prop-f 6s ease-in-out infinite;filter:drop-shadow(0 16px 14px rgba(0,0,0,.5))}
-.__P__ .ag-wall{transform:rotate(-3deg);margin:0 -4vw}
-.__P__ .ag-lane{overflow:hidden;margin-bottom:18px}
-.__P__ .ag-track{display:flex;gap:18px;width:max-content;animation:ag-ht-run 70s linear infinite}
-.__P__ .ag-lane.ag-b .ag-track{animation-direction:reverse;animation-duration:82s}
-.__P__ .ag-q{flex:none;width:clamp(300px,30vw,440px);display:flex;gap:16px;align-items:flex-start;padding:22px;border-radius:28px;border:1.5px solid var(--ag-bd-hi);background:var(--ag-card)}
-.__P__ .ag-av{flex:none;width:64px;height:64px;border-radius:50%;display:grid;place-items:center;border:1.5px solid rgba(240,185,62,.6);color:var(--ag-gold-t);font-size:1.5rem;font-weight:800;text-align:center;line-height:1.2}
-.__P__ .ag-q p{margin:0;font-size:.95rem;line-height:1.55;color:var(--ag-text)}
-.__P__ .ag-q small{display:block;margin-top:12px;font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ag-muted)}
+.__P__ .ag-wall{margin:0}
+.__P__ .ag-lane{overflow:hidden;padding:6px 0}
+.__P__ .ag-track{display:flex;gap:20px;width:max-content;animation:ag-ht-run 60s linear infinite}
+.__P__ .ag-lane:hover .ag-track{animation-play-state:paused}
+.__P__ .ag-q{flex:none;width:clamp(270px,24vw,340px);display:flex;flex-direction:column;gap:18px;padding:24px;border-radius:20px;border:1px solid var(--ag-bd-hi);background:var(--ag-card)}
+.__P__ .ag-q:before{content:"\\201C";font-size:2.6rem;line-height:.6;height:18px;font-weight:900;color:var(--ag-gold-t)}
+.__P__ .ag-q p{margin:0;flex:1;font-size:.9rem;line-height:1.6;color:var(--ag-text)}
+.__P__ .ag-by{display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid var(--ag-bd-hi)}
+.__P__ .ag-av{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;border:1.5px solid rgba(240,185,62,.6);color:var(--ag-gold-t);font-size:1rem;font-weight:800;line-height:1;overflow:hidden}
+.__P__ .ag-by b{display:block;font-size:.9rem;font-weight:700;line-height:1.25;color:var(--ag-text)}
+.__P__ .ag-by small{display:block;margin-top:2px;font-size:.74rem;font-weight:600;letter-spacing:.04em;color:var(--ag-muted)}
 .__P__ .ag-q em{font-style:normal;color:var(--ag-gold-t);font-weight:800}
 @keyframes ag-ht-run{to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){.__P__ .ag-track{animation:none}.__P__ .ag-tt img{animation:none}}
@@ -730,10 +733,10 @@ sec('home-testimonials','ag-htest','''
   /* ------------------------------------------------------------------ */
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
   var real=TESTIMONIALS.length>0, base=real?TESTIMONIALS:[1,2,3,4].map(function(){return {ph:true,quote:'Placeholder. A real quote from a client, used with their permission, goes here.',name:'Client name',role:'Business'};});
-  function card(t){return '<div class="ag-q"><div class="ag-av">'+(t.photo?'<img alt="" src="'+esc(t.photo)+'" style="width:100%;height:100%;border-radius:50%;object-fit:cover">':esc((t.name||'').replace(/^(Engr|Mr|Miss|Mrs)\\s+/,'').charAt(0)))+'</div><div><p>'+(t.ph?'<em>Placeholder.</em> '+esc(t.quote.replace(/^Placeholder\\.\\s*/,'')):esc(t.quote))+'</p><small>'+esc(t.name)+(t.role?' &middot; '+esc(t.role):'')+'</small></div></div>';}
+  function card(t){var nm=esc(t.name), ini=esc((t.name||'').replace(/^(Engr|Mr|Miss|Mrs)\\s+/,'').charAt(0)), av=t.photo?'<img alt="" src="'+esc(t.photo)+'" style="width:100%;height:100%;object-fit:cover">':ini;return '<figure class="ag-q" style="margin:0"><p>'+(t.ph?'<em>Placeholder.</em> '+esc(t.quote.replace(/^Placeholder\\.\\s*/,'')):esc(t.quote))+'</p><figcaption class="ag-by"><span class="ag-av">'+av+'</span><span><b>'+nm+'</b>'+(t.role?'<small>'+esc(t.role)+'</small>':'')+'</span></figcaption></figure>';}
   function lane(arr,cls){var h=arr.map(card).join('');return '<div class="ag-lane '+cls+'"><div class="ag-track">'+h+h+h+h+'</div></div>';}
   var rev=base.slice().reverse();
-  document.getElementById('ag-htest-wall').innerHTML=lane(base,'')+lane(rev,'ag-b');
+  document.getElementById('ag-htest-wall').innerHTML=lane(base,'');
 ''','(Home) ')
 
 # ---------- CTA (light, "let's get in touch") with cartoon portrait + flying 3D emoji ----------
