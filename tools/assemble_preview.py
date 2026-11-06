@@ -16,6 +16,8 @@ SLUGS=list(_j.load(open('/home/claude/azeez-portfolio/tools/project_images.json'
 for _s in SLUGS: PAGES['p-'+_s]=['project-'+_s]
 ROUTES={'/':'home','/work':'work','/services':'services','/process':'process','/about':'about','/contact':'contact','/start':'start'}
 for _s in SLUGS: ROUTES['/work/'+_s]='p-'+_s
+NUMS=['cropzone-africa','nubid-engineering','quietpalm','caliph-engineering','pilgrim-prive','proventa','faucet-water-purifier-funnel','ginseng-five-treasure-tea-funnel','talk-to-ai-like-a-pro','adjustable-laptop-workstation','foldable-hand-fan']
+for _i,_s in enumerate(NUMS,1): ROUTES['/project-%d'%_i]='p-'+_s
 out=['<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Azeez Gazalle Portfolio</title><style>html{scroll-behavior:auto}body{margin:0;background:#07070a}[data-page]{display:none}[data-page].on{display:block}</style></head><body>']
 import json,re
 out.append(r('00-loader'))
