@@ -66,6 +66,17 @@ html[data-ag-theme="light"] .ag-habout.ag-light:not(.ag-nf) .ag-pill.ag-solid{ba
 .ag-habout .ag-facts span{display:block;margin-top:6px;font-size:.84rem;color:var(--ag-muted)}
 .ag-habout .ag-big{text-align:center}
 @media (max-width:760px){.ag-habout{padding-bottom:80px}.ag-habout .ag-prop{--w:20vw !important}}
+
+/* AG-MOBILE-FIX */
+@media (max-width:760px){
+.ag-habout .ag-wrap,.ag-habout .ag-box,.ag-habout .ag-big,.ag-habout .ag-words{text-align:left}
+.ag-habout .ag-words{font-size:1.2rem;line-height:1.55;font-weight:600}
+.ag-habout .ag-facts{display:grid;grid-template-columns:1fr 1fr;gap:26px 16px;justify-content:stretch;margin:34px 0 30px;padding-top:28px;text-align:left}
+.ag-habout .ag-facts strong{font-size:2rem;white-space:nowrap}
+.ag-habout .ag-prop:nth-of-type(2),.ag-habout .ag-prop:nth-of-type(3){display:none}
+.ag-habout .ag-prop{--w:12vw !important;max-width:60px}
+}
+/* /AG-MOBILE-FIX */
 </style>
 
 <section class="ag-habout ag-sheet" id="ag-habout" aria-label="About">

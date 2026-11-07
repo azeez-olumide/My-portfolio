@@ -68,6 +68,16 @@ html[data-ag-theme="light"] .ag-hproc.ag-light:not(.ag-nf) .ag-pill.ag-solid{bac
 .ag-hproc .ag-st:hover img{transform:translateY(-6px) rotate(-8deg) scale(1.08)}
 .ag-hproc .ag-foot{margin-top:56px}
 @media (max-width:900px){.ag-hproc ol{grid-template-columns:1fr}.ag-hproc .ag-st{grid-template-columns:50px 1fr 48px}.ag-hproc .ag-st img{width:48px;height:48px}}
+
+/* AG-MOBILE-FIX */
+@media (max-width:760px){
+.ag-hproc .ag-prop{display:none !important}
+.ag-hproc .ag-st{position:relative;grid-template-columns:42px 1fr;gap:6px 14px;padding:26px 0}
+.ag-hproc .ag-st>img{position:absolute;right:0;top:26px;width:34px;height:34px}
+.ag-hproc .ag-st h3{padding-right:46px}
+.ag-hproc .ag-st p{font-size:.94rem}
+}
+/* /AG-MOBILE-FIX */
 </style>
 
 <section class="ag-hproc ag-sheet ag-light" id="ag-hproc" aria-label="Process">

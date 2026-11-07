@@ -64,7 +64,7 @@ sec('home-work','ag-hwork',SHARED_CSS+'''
       var cells='<div class="ag-im"><img loading="lazy" alt="'+esc(p.name)+' website mockup" src="'+esc(p.cover)+'"></div>';
       for(var k=0;k<2;k++){ if(p.shots[k]) cells+='<div class="ag-im"><img loading="lazy" alt="'+esc(p.name)+' screenshot '+(k+1)+'" src="'+esc(p.shots[k])+'"></div>'; }
       var a=document.createElement('article'); a.className='ag-card'; a.style.setProperty('--k',i);
-      a.innerHTML='<div class="ag-ch"><div class="ag-ct"><span class="ag-no">0'+n+'</span><div><small>'+esc(p.category)+'</small><b>'+esc(p.name)+' <span style="color:#b9b1a1;font-weight:600">&middot; '+esc(p.industry)+'</span></b></div></div><a class="ag-lv" href="/work/'+esc(p.slug)+'">Case study</a></div><div class="ag-imgs">'+cells+'</div>';
+      a.innerHTML='<div class="ag-ch"><div class="ag-ct"><span class="ag-no">0'+n+'</span><div><small>'+esc(p.category)+'</small><b>'+esc(p.name)+' <span class="ag-ind" style="color:#b9b1a1;font-weight:600"><i style="font-style:normal">&middot; </i>'+esc(p.industry)+'</span></b></div></div><a class="ag-lv" href="/work/'+esc(p.slug)+'">Case study</a></div><div class="ag-imgs">'+cells+'</div>';
       host.appendChild(a);
     });
   }

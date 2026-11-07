@@ -79,6 +79,25 @@ html[data-ag-theme="light"] .ag-hwork.ag-light:not(.ag-nf) .ag-pill.ag-solid{bac
 .ag-hwork .ag-all{margin-top:48px;display:flex;justify-content:center}
 @media (max-width:760px){.ag-hwork .ag-card{padding:14px;border-radius:26px;top:calc(76px + var(--k) * 18px)}.ag-hwork .ag-imgs{grid-template-columns:1fr;grid-template-rows:auto;height:auto}.ag-hwork .ag-im{aspect-ratio:16/10}.ag-hwork .ag-im:first-child{grid-row:auto}.ag-hwork .ag-im:nth-child(n+2){display:none}.ag-hwork .ag-ct{gap:12px}.ag-hwork .ag-lv{padding:12px 16px}}
 @media (prefers-reduced-motion:reduce){.ag-hwork .ag-card{position:relative;top:0}}
+
+/* AG-MOBILE-FIX */
+@media (max-width:760px){
+.ag-hwork .ag-prop{display:none !important}
+.ag-hwork .ag-stack{counter-reset:agn}
+.ag-hwork .ag-card{counter-increment:agn;position:sticky}
+.ag-hwork .ag-ch{display:flex;flex-direction:column;align-items:flex-start;gap:14px;padding:8px 6px 16px}
+.ag-hwork .ag-ct{display:block}
+.ag-hwork .ag-no{font-size:0;display:block;margin-bottom:10px}
+.ag-hwork .ag-no::before{content:"0" counter(agn);font-size:1.6rem;font-weight:900;letter-spacing:-.04em;line-height:1}
+.ag-hwork .ag-ct small{font-size:.62rem;letter-spacing:.1em;line-height:1.5;margin-bottom:6px}
+.ag-hwork .ag-ct b{font-size:1.2rem;line-height:1.25;letter-spacing:-.02em}
+.ag-hwork .ag-ind{display:block;margin-top:5px;font-size:.84rem;line-height:1.4}
+.ag-hwork .ag-ind i{display:none}
+.ag-hwork .ag-lv{padding:0;border:0;border-radius:0;background:none;color:var(--ag-gold);font-size:.74rem;letter-spacing:.12em}
+.ag-hwork .ag-lv::before{content:"";position:absolute;inset:0;border-radius:inherit;z-index:3}
+.ag-hwork .ag-lv::after{content:"  \2192"}
+}
+/* /AG-MOBILE-FIX */
 </style>
 
 <section class="ag-hwork ag-sheet" id="ag-hwork" aria-label="Selected work">
@@ -147,7 +166,7 @@ html[data-ag-theme="light"] .ag-hwork.ag-light:not(.ag-nf) .ag-pill.ag-solid{bac
       var cells='<div class="ag-im"><img loading="lazy" alt="'+esc(p.name)+' website mockup" src="'+esc(p.cover)+'"></div>';
       for(var k=0;k<2;k++){ if(p.shots[k]) cells+='<div class="ag-im"><img loading="lazy" alt="'+esc(p.name)+' screenshot '+(k+1)+'" src="'+esc(p.shots[k])+'"></div>'; }
       var a=document.createElement('article'); a.className='ag-card'; a.style.setProperty('--k',i);
-      a.innerHTML='<div class="ag-ch"><div class="ag-ct"><span class="ag-no">0'+n+'</span><div><small>'+esc(p.category)+'</small><b>'+esc(p.name)+' <span style="color:#b9b1a1;font-weight:600">&middot; '+esc(p.industry)+'</span></b></div></div><a class="ag-lv" href="/work/'+esc(p.slug)+'">Case study</a></div><div class="ag-imgs">'+cells+'</div>';
+      a.innerHTML='<div class="ag-ch"><div class="ag-ct"><span class="ag-no">0'+n+'</span><div><small>'+esc(p.category)+'</small><b>'+esc(p.name)+' <span class="ag-ind" style="color:#b9b1a1;font-weight:600"><i style="font-style:normal">&middot; </i>'+esc(p.industry)+'</span></b></div></div><a class="ag-lv" href="/work/'+esc(p.slug)+'">Case study</a></div><div class="ag-imgs">'+cells+'</div>';
       host.appendChild(a);
     });
   }

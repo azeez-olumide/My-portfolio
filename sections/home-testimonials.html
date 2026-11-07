@@ -76,6 +76,15 @@ html[data-ag-theme="light"] .ag-htest.ag-light:not(.ag-nf) .ag-pill.ag-solid{bac
 .ag-htest .ag-q em{font-style:normal;color:var(--ag-gold-t);font-weight:800}
 @keyframes ag-ht-run{to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){.ag-htest .ag-track{animation:none}.ag-htest .ag-tt img{animation:none}}
+
+/* AG-MOBILE-FIX */
+@media (max-width:760px){
+.ag-htest .ag-tt{flex-wrap:nowrap;gap:12px;padding:0 20px;margin-bottom:24px;align-items:center}
+.ag-htest .ag-tt h2{margin:0}
+.ag-htest .ag-tt img{width:40px;flex:none}
+.ag-htest.ag-sheet{padding-bottom:56px}
+}
+/* /AG-MOBILE-FIX */
 </style>
 
 <section class="ag-htest ag-sheet" id="ag-htest" aria-label="Client testimonials">
